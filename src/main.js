@@ -3,11 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store/'
 import './registerServiceWorker'
+import vueTouch from "vue-plugin-touch"
+import Vant from 'vant'; // todo
+
+import {initRem} from '@/utils/common'
+import 'vant/lib/index.css';
 import '@/assets/styles/reset.scss'
 import '@/assets/styles/index.scss'
-import { Notify, Dialog } from 'vant'
-import vueTouch from "vue-plugin-touch"
-import { Button } from 'vant'; // demo
 
 import $ from "jquery"
 import requestAnimationFrameHack from './utils/requestAnimationFram'
@@ -17,8 +19,8 @@ requestAnimationFrameHack()
 jequeryExtensFly($)
 window.$ = $
 
-Vue.use(Notify).use(Dialog).use(vueTouch)
-Vue.use(Button)
+
+Vue.use(Vant).use(vueTouch)
 // const ua = navigator.userAgent
 
 // if(ua.indexOf("bsl") >= 0 ) {
@@ -49,6 +51,7 @@ Vue.use(Button)
 
 // }
 Vue.config.productionTip = false
+// initRem()
 
 new Vue({
   router,
