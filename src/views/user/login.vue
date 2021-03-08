@@ -12,12 +12,52 @@
       left-arrow
       @click-left="onClickLeft"
     />
+    <van-tabs v-model="active" @click="onClickTab" color="#1989fa">
+      <van-tab title="登陆" ></van-tab>
+      <van-tab title="注册" ></van-tab>
+    </van-tabs>
 
-    <div class="choose_btn">
+    <!-- <div class="choose_btn">
       <router-link to="/login" class="l_btn cur">登陆</router-link>
       <router-link to="/register" class="l_btn">注册</router-link>
-    </div>
-    <form class="form" @submit.prevent="handleSubmit">
+    </div> -->
+<van-form @submit="handleSubmit" class="form">
+  <van-field
+    v-model.trim="data.username"
+    name="用户名"
+    label="用户名"
+    right-icon="cross"
+    @click-right-icon ="clear()"
+    placeholder="请输入手机号码"
+  />
+  <van-field
+    v-model="data.password"
+    :type="psd == 'password' ? 'password' : 'text'"
+    name="密码"
+    label="密码"
+    placeholder="密码"
+    :right-icon="psd == 'password' ? 'closed-eye' : 'eye-o'"
+    @click-right-icon ="show_psd"
+  />
+       <label class="contract">
+        <van-checkbox v-model="checked" icon-size="14px" sytle="color:#000;"
+          >我已阅读并同意</van-checkbox
+        >
+        <!--                <router-link to="/regContact">用户协议</router-link>-->
+        <router-link to="/art/12">《用户协议》</router-link>和<router-link
+          to="/art/13"
+          >《隐私政策》</router-link
+        >
+      </label>
+        <label class="forget">
+        <van-icon name="question-o" />
+         <router-link to="/forgetpwd" class="forgetpwd">忘记密码？</router-link>
+      </label>
+  <div style="margin: 16px;">
+    <van-button round block type="info" native-type="submit">提交</van-button>
+  </div>
+</van-form>
+    <!-- <form class="form" @submit.prevent="handleSubmit">
       <div class="item">
         <div class="content">
           <span class="left_icon phone_icon"></span>
@@ -52,7 +92,7 @@
         <van-checkbox v-model="checked" icon-size="14px" sytle="color:#000;"
           >我已阅读并同意</van-checkbox
         >
-        <!--                <router-link to="/regContact">用户协议</router-link>-->
+                       <router-link to="/regContact">用户协议</router-link>
         <router-link to="/art/12">《用户协议》</router-link>和<router-link
           to="/art/13"
           >《隐私政策》</router-link
@@ -70,7 +110,7 @@
       <div class="item item_forget">
         <router-link to="/forgetpwd" class="forgetpwd">忘记密码？</router-link>
       </div>
-    </form>
+    </form> -->
     <div class="footer_bg"></div>
   </div>
 </template>
@@ -92,7 +132,8 @@ export default {
       bg: '',
       checked: true,
       config: {},
-      psd: 'password'
+      psd: 'password',
+      active:0
     };
   },
   created () {
@@ -102,9 +143,13 @@ export default {
     this.start();
   },
   methods: {
-      onClickLeft(){
-          this.$router.push({path:'/user'})
-      },
+    onClickLeft () {
+      this.$router.push({ path: '/user' })
+    },
+    onClickTab(name,title){
+        const PATH=name===0?'/login':'/register'
+        this.$router.push({path:PATH})
+    },
     start () {
       Fetch('/index/webconfig', { type: 'bg' }).then(res => {
         this.bg = 'url("' + res.data.login + '")';
@@ -181,7 +226,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .contract {
   display: flex;
   flex-direction: row;
@@ -225,7 +270,8 @@ export default {
   padding-top: 1px;
   padding-bottom: 20px;
   background-color: #ffffff;
-  min-height: 100%;
+//   min-height: 100%;
+    height: 100vh;
 }
 
 .form {
@@ -369,6 +415,7 @@ export default {
   width: 100%;
   max-width: 750px;
   position: absolute;
+  margin-top: 20px;
   height: 94px;
   background: url(./images/login_bg.png) no-repeat top center;
   background-size: 100% 100%;
@@ -384,6 +431,12 @@ export default {
   .form {
     margin: 40px auto 0 auto;
   }
+}
+.forget{
+.van-icon .van-icon-question-o{
+    font-size: 40px;
+    color: #1989fa;
+}
 }
 </style>
 
