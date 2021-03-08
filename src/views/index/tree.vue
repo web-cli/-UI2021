@@ -1,6 +1,8 @@
 <template>
 	<div class="mobile">
 		
+		<van-button type="primary">主要按钮</van-button>
+		<div class="test">999</div>
 		<!-- 关于我们 -->
 		<div class="list_outer">
 			<video-player  class="video-player vjs-custom-skin"

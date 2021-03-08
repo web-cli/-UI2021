@@ -4,8 +4,10 @@ import router from './router'
 import store from './store/'
 import './registerServiceWorker'
 import '@/assets/styles/reset.scss'
+import '@/assets/styles/index.scss'
 import { Notify, Dialog } from 'vant'
 import vueTouch from "vue-plugin-touch"
+import { Button } from 'vant'; // demo
 
 import $ from "jquery"
 import requestAnimationFrameHack from './utils/requestAnimationFram'
@@ -16,6 +18,7 @@ jequeryExtensFly($)
 window.$ = $
 
 Vue.use(Notify).use(Dialog).use(vueTouch)
+Vue.use(Button)
 // const ua = navigator.userAgent
 
 // if(ua.indexOf("bsl") >= 0 ) {
@@ -40,7 +43,7 @@ Vue.use(Notify).use(Dialog).use(vueTouch)
 
 //   function step(s) {
 //     alert(s)
-//     //document.body.innerHTML = 'µÚ' + x + '´Î»ñµÃ²½ÊýÎª' + s;
+//     //document.body.innerHTML = 'ï¿½ï¿½' + x + 'ï¿½Î»ï¿½Ã²ï¿½ï¿½ï¿½Îª' + s;
 //   }
 //   BSL.PhoneID('id');
 

@@ -7801,7 +7801,7 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@^2.12.4:
+vant@^2.12.8:
   version "2.12.8"
   resolved "http://npm-registry.yy.com/vant/download/vant-2.12.8.tgz#bd71999ebaf9b4e4fb9e7cb4b0a2e74ef5275179"
   integrity sha1-vXGZnrr5tOT7nny0sKLnTvUnUXk=
