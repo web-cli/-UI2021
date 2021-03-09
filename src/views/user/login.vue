@@ -6,6 +6,7 @@
                 登陆
             </div>
         </div> -->
+    <!-- <Footer></Footer> -->
     <van-nav-bar
       title="登陆"
       left-text="返回"
@@ -432,10 +433,13 @@ export default {
     margin: 40px auto 0 auto;
   }
 }
-.forget{
+
+</style>
+<style lang="scss">
+  .forget{
 .van-icon .van-icon-question-o{
     font-size: 40px;
-    color: #1989fa;
+    color:$theme-color;
 }
 }
 </style>

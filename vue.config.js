@@ -9,19 +9,26 @@ const path = require('path')
 // })
 
 
-const isDevelopment = process.env.NODE_ENV === 'development'
+// const isDevelopment = process.env.NODE_ENV === 'development'
 const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  // css: {
-  //   loaderOptions: {
-  //     postcss: {
-  //       plugins: [postcss, autoprefixer]
-  //     },
-  //     sass: {
-  //       // rependData: "@import '~@/assets/styles/utils.scss';"
-  //     }
-  //   }
+  css: {
+    loaderOptions: {
+      // postcss: {
+      //   plugins: [postcss, autoprefixer]
+      // },
+      sass: {
+        prependData: '@import \'~@/assets/styles/index.scss\';'
+        // rependData: "@import '~@/assets/styles/utils.scss';"
+      }
+    }
+  },
+  // devServer: {
+  //   disableHostCheck: true,
+  //   host: 'demo.bcn5ln.cn',
+  //   port: 8080,
+  //   https: true
   // },
   configureWebpack: {
     // externals: {

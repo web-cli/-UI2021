@@ -35,7 +35,7 @@ export default async (url, data, opt, isLoad = true) => {
     
 	if (url.indexOf("http") != -1 ) {
 	}else{
-		url = "http://8.136.126.100/api"+url;
+		url = "https://demo.bcn5ln.cn/api"+url;
 	}
     // url = "/api"+url;
 	

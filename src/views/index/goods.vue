@@ -1,11 +1,18 @@
 <template>
 	<div class="mobile">
-		<div class="header">
+		<!-- <div class="header">
 			<div class="head">
 				<a @click="$router.back()" class="back"></a>
 				积分商城
 			</div>
-		</div>
+		</div> -->
+		
+	<van-nav-bar
+  title="积分商城"
+  left-arrow
+	fixed
+  @click-left="$router.back()"
+/>
 <!-- 		<div class="imgs">
 			<img src="./image/huanbao/jiaoshi.png" style="width: 100%;" alt="">
 		</div> -->
@@ -15,16 +22,16 @@
 			<span>我的积分： {{mydata.integral}}</span>
 		</div>
 		<div class="goods_list">
-			<div v-for="item,j in category_data.category" v-bind:style="{display: j === dh_index ? 'block' : 'none'}">
+			<div v-for="item,j in category_data.category"  class="goods-wrap">
 				<div class="right_list" v-for="item2,j_num in item.list">
 					<div class="shop_pic">
-						<img :src="item2.img" style="width: 100%;height: 30vw;border-radius: 20px;" alt="" />
+						<img :src="item2.img"  />
 					</div>
 					<div class="shop_detail">
-						<p class="list_title" style="font-weight: 700;margin-top: 5px;">{{item2.title}}</p>
+						<p class="list_title" style="font-weight: 500;margin-top: 5px;">{{item2.title}}</p>
 						<div class="shop_gb">
 							<div class="vip_icon">
-								<span>{{item2.integral}} 积分</span>
+								<p><span>{{item2.integral}} </span>积分</p>
 							</div>
 							<!-- <div class="vip_icon" :class="`vip${item2.level}`">
 								<span>{{item2.price}}积分</span>
@@ -33,15 +40,20 @@
 								<span>{{item2.next_level_price}}积分</span>
 							</div> -->
 						</div>
-						<div class="dh_num">
+						<!-- <div class="dh_num"> -->
 							<!-- <div class="add_del">
 								<span @click="del(j,j_num)">-</span>
 								<span class="num">{{dh_num[j][j_num]}}</span>
 								<span @click="add(j,j_num)">+</span>
 							</div> -->
 							<!-- <div class="dh_btn" :class="[{'dh_yes':item2.status==1},{'dh_no':item2.status==2},{'dh_over':item2.status==3},]" @click="category_btn(item2.id,dh_num[j][j_num])">{{dh_status(item2.status)}}</div> -->
-							<div class="dh_btn" @click="category_btn(item2.id,dh_num[j][j_num])">兑换</div>
+							<!-- <div class="dh_btn" @click="category_btn(item2.id,dh_num[j][j_num])">兑换</div> -->
+					
+						<!-- </div> -->
+						<div class="btn">
+								 <van-button round block type="info" native-type="submit" size="small">兑换</van-button>
 						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -126,8 +138,8 @@
 						this.dh_num.push([]);
 						for (var j = 0; j < res.data.category[i].list.length; j++) {
 							this.dh_num[i].push(1);
-						};
-					};
+						}
+					}
 					if (res.data.exchange_rules.content || res.data.exchange_rules.title) {
 						this.rule_msg = res.data.exchange_rules.content || res.data.exchange_rules.title;
 					}
@@ -150,7 +162,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.mobile {
 		width: 100%;
 		margin: 0 auto;
@@ -163,18 +175,27 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
+	
 	}
 
 	.right_list {
-		float: left;
-		/* box-shadow: 0 1vw 1vw rgba(0,0,0,.2); */
-		margin-top: 2vw;
-		padding: 5vw;
-		width: 50%;
+border-radius: 12px;
+background: #FFFFFF;
+border-radius: 12px;
+margin-top: 2vw;
+	width: 46%;
+	height: 200px;
+box-shadow: 0 1vw 1vw rgba(0,0,0,.2);
+margin-top: 30px;
 	}
-
-	.shop_pic img {
-		width: 95%;
+	.goods-wrap{
+		display: flex;
+		justify-content: space-between;
+		padding: 0 20px;
+		flex-wrap: wrap;
+		flex-shrink: 1;
+		padding-bottom: 20px;
+			background: #F7F8FA;
 	}
 
 	.shop_detail {
@@ -182,11 +203,34 @@
 		line-height: 7vw;
 	}
 
-	.dh_btn {
-		text-align: center;
-		color: #FFFFFF;
-		border-radius: 3vw;
-		background-color: #0f51a0;
-		padding: 0 7vw;
+	// .dh_btn {
+	// 	text-align: center;
+	// 	color: #FFFFFF;
+	// 	border-radius: 3vw;
+	// 	background-color: #0f51a0;
+	// 	padding: 0 7vw;
+	// }
+	.shop_pic{
+	@include flex-center();
+	width: 150px;
+	height: 76px;
+	margin-top: 10px;
+	img{
+	max-width: 120px;
+	max-height: 76px;
 	}
+}
+.btn{
+	width: 100px;
+	margin:10px auto 0 auto
+}
+.vip_icon{
+		color: #CBC9CC;
+		font-size: 14px;
+	span{
+		font-weight: bold;
+		color: #EE0A24;
+	}
+}
+
 </style>

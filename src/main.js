@@ -6,11 +6,11 @@ import './registerServiceWorker'
 import vueTouch from "vue-plugin-touch"
 import Vant from 'vant'; // todo
 
-import {initRem} from '@/utils/common'
+// import {initRem} from '@/utils/common'
 import 'vant/lib/index.css';
 import '@/assets/styles/reset.scss'
 import '@/assets/styles/index.scss'
-
+import './components/install.js' // 注册全局css
 import $ from "jquery"
 import requestAnimationFrameHack from './utils/requestAnimationFram'
 import jequeryExtensFly from './utils/fly'
