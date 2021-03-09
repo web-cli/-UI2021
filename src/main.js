@@ -6,7 +6,7 @@ import './registerServiceWorker'
 import vueTouch from "vue-plugin-touch"
 import Vant from 'vant'; // todo
 
-// import {initRem} from '@/utils/common'
+import {initRem} from '@/utils/common'
 import 'vant/lib/index.css';
 import '@/assets/styles/reset.scss'
 import '@/assets/styles/index.scss'
@@ -51,7 +51,7 @@ Vue.use(Vant).use(vueTouch)
 
 // }
 Vue.config.productionTip = false
-// initRem()
+initRem()
 
 new Vue({
   router,

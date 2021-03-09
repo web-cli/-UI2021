@@ -145,14 +145,14 @@
 	.indexnav a span {
 		width: 100%;
 		display: block;
-		line-height: 16px;
+		line-height: 32px;
 		margin-top: 4px;
-		font-size: 13px;
+		font-size: 26px;
 	}
 
 	.indexnav a img {
-		width: 24px;
-		height: 24px;
+		width: 48px;
+		height: 48px;
 		margin: 0 auto;
 		display: block;
 		overflow: hidden;
@@ -182,7 +182,7 @@
 		.footer_nav {
 
 			width: 100vw;
-			height: 50px;
+			height: 100px;
 			position: fixed;
 			bottom: 0;
 			left: 0;
@@ -211,12 +211,12 @@
 
 		#footer {
 			width: 100vw;
-			height: 50px;
+			height: 100px;
 			position: fixed;
 			bottom: 0;
 			left: 0;
 			right: 0;
-			box-shadow: 0px -1px 5px rgba(89, 125, 172, .4);
+			box-shadow: 0px -2px 10px rgba(89, 125, 172, .4);
 			margin: 0 auto;
 			z-index: 998;
 			background-color: #fff;
@@ -250,12 +250,12 @@
 			-ms-flex-align: center;
 			align-items: center;
 			color: #4b4b4b;
-			font-size: 12px;
+			font-size: 24px;
 		}
 
 		#footer .footer_item img {
-			width: 24px;
-			height: 24px;
+			width: 48px;
+			height: 48px;
 		}
 	}
 	

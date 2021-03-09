@@ -1,8 +1,8 @@
 <template>
 	<div class="mobile">
 		
-		<van-button type="primary">主要按钮</van-button>
-		<div class="test">999</div>
+		<!-- <van-button type="primary">主要按钮</van-button>
+		<div class="test">999</div> -->
 		<!-- 关于我们 -->
 		<div class="list_outer">
 			<video-player  class="video-player vjs-custom-skin"
@@ -700,17 +700,17 @@
 		.appdown {
 			width: 100%;
 			max-width: 750px;
-			height: 56px;
+			height: 102px;
 			background-color: rgba(0, 0, 0, 0.5);
 			position: fixed;
-			font-size: 12px;
-			bottom: 50px;
+			font-size: 24px;
+			bottom: 100px;
 
 			.down {
-				width: 65px;
+				width: 130px;
 				height: 100%;
 				float: right;
-				margin-right: 18px;
+				margin-right: 36px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -718,29 +718,29 @@
 				a {
 					display: block;
 					width: 100%;
-					height: 26px;
-					line-height: 26px;
+					height: 52px;
+					line-height: 52px;
 					text-align: center;
 					border-radius: 3px;
 					background-color: #FE8000;
 					color: #fff;
-					font-size: 12px;
+					font-size: 24px;
 				}
 			}
 
 			.close_down {
-				width: 15px;
+				width: 30px;
 				float: right;
 				height: 100%;
 				font-size: .6rem;
 
 				a {
 					display: block;
-					width: 15px;
-					font-size: 14px;
+					width: 30px;
+					font-size: 28px;
 					cursor: pointer;
 					color: #FE8000;
-					line-height: 25px;
+					line-height: 50px;
 					text-align: center;
 				}
 			}
@@ -750,7 +750,7 @@
 				height: 100%;
 				color: #fff;
 				line-height: 0.5rem;
-				margin-left: 9px;
+				margin-left: 18px;
 				display: flex;
 				flex-wrap: wrap;
 				flex-direction: column;
@@ -759,25 +759,25 @@
 			}
 
 			.mark p:nth-of-type(1) {
-				line-height: 17px;
-				font-size: 13px;
+				line-height: 34px;
+				font-size: 26px;
 			}
 
 			.mark p:nth-of-type(2) {
-				line-height: 14px;
-				font-size: 12px;
+				line-height: 28px;
+				font-size: 24px;
 			}
 
 			.logo {
-				width: 32px;
-				height: 32px;
+				width: 64px;
+				height: 64px;
 				float: left;
-				margin-left: 8px;
-				margin-top: 12px;
+				margin-left: 16px;
+				margin-top: 24px;
 
 				img {
 					max-height: 100%;
-					border-radius: 6px;
+					border-radius: 12px;
 				}
 			}
 		}

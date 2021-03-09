@@ -1,12 +1,12 @@
 const path = require('path')
 // const px2rem = require('postcss-px2rem')
-// const px2rem = require('postcss-px2rem-exclude')
-// const autoprefixer = require('autoprefixer')
+const px2rem = require('postcss-px2rem-exclude')
+const autoprefixer = require('autoprefixer')
 
-// const postcss = px2rem({
-//   exclude: /node_modules/i,
-//   remUnit: 100 // 基准大小 baseSize，需要和 ./src/js/lib/flexible.js 中相同
-// })
+const postcss = px2rem({
+  exclude: /node_modules/i,
+  remUnit: 100 // 基准大小 baseSize，需要和 ./src/js/lib/flexible.js 中相同
+})
 
 
 // const isDevelopment = process.env.NODE_ENV === 'development'
@@ -15,9 +15,9 @@ const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
   css: {
     loaderOptions: {
-      // postcss: {
-      //   plugins: [postcss, autoprefixer]
-      // },
+      postcss: {
+        plugins: [postcss, autoprefixer]
+      },
       sass: {
         prependData: '@import \'~@/assets/styles/index.scss\';'
         // rependData: "@import '~@/assets/styles/utils.scss';"
