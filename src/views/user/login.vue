@@ -11,53 +11,62 @@
       title="登陆"
       left-text="返回"
       left-arrow
+      fixed
       @click-left="onClickLeft"
     />
-    <van-tabs v-model="active" @click="onClickTab" color="#1989fa">
-      <van-tab title="登陆" ></van-tab>
-      <van-tab title="注册" ></van-tab>
-    </van-tabs>
+    <div class="login-top"></div>
+    <div class="login-content">
+      <van-tabs v-model="active" @click="onClickTab" color="#1989fa">
+        <van-tab title="登陆"></van-tab>
+        <van-tab title="注册"></van-tab>
+      </van-tabs>
+      <van-form @submit="handleSubmit" class="form">
+        <van-field
+          v-model.trim="data.username"
+          name="账号"
+          label="登录账号"
+          right-icon="cross"
+          @click-right-icon="clear()"
+          placeholder="请输入手机号码"
+        />
+        <van-field
+          v-model="data.password"
+          :type="psd == 'password' ? 'password' : 'text'"
+          name="密码"
+          label="密码"
+          placeholder="密码"
+          :right-icon="psd == 'password' ? 'closed-eye' : 'eye-o'"
+          @click-right-icon="show_psd"
+        />
+        <label class="contract change-pos">
+          <van-checkbox v-model="checked" icon-size="14px" sytle="color:#000;"
+            >我已阅读并同意</van-checkbox
+          >
+          <!--                <router-link to="/regContact">用户协议</router-link>-->
+          <router-link to="/art/12">《用户协议》</router-link>和<router-link
+            to="/art/13"
+            >《隐私政策》</router-link
+          >
+        </label>
+        <label class="contract change-pos">
+          <van-icon name="question-o" color="#2c6dfb" size="18" />
+          <router-link to="/forgetpwd" :style="{marginLeft: '6px'}"
+            >忘记密码？</router-link
+          >
+        </label>
+        <div style="margin: 16px">
+          <van-button round block type="info" native-type="submit"
+            >立即登录</van-button
+          >
+        </div>
+      </van-form>
+    </div>
 
     <!-- <div class="choose_btn">
       <router-link to="/login" class="l_btn cur">登陆</router-link>
       <router-link to="/register" class="l_btn">注册</router-link>
     </div> -->
-<van-form @submit="handleSubmit" class="form">
-  <van-field
-    v-model.trim="data.username"
-    name="用户名"
-    label="用户名"
-    right-icon="cross"
-    @click-right-icon ="clear()"
-    placeholder="请输入手机号码"
-  />
-  <van-field
-    v-model="data.password"
-    :type="psd == 'password' ? 'password' : 'text'"
-    name="密码"
-    label="密码"
-    placeholder="密码"
-    :right-icon="psd == 'password' ? 'closed-eye' : 'eye-o'"
-    @click-right-icon ="show_psd"
-  />
-       <label class="contract">
-        <van-checkbox v-model="checked" icon-size="14px" sytle="color:#000;"
-          >我已阅读并同意</van-checkbox
-        >
-        <!--                <router-link to="/regContact">用户协议</router-link>-->
-        <router-link to="/art/12">《用户协议》</router-link>和<router-link
-          to="/art/13"
-          >《隐私政策》</router-link
-        >
-      </label>
-        <label class="forget">
-        <van-icon name="question-o" />
-         <router-link to="/forgetpwd" class="forgetpwd">忘记密码？</router-link>
-      </label>
-  <div style="margin: 16px;">
-    <van-button round block type="info" native-type="submit">提交</van-button>
-  </div>
-</van-form>
+
     <!-- <form class="form" @submit.prevent="handleSubmit">
       <div class="item">
         <div class="content">
@@ -134,7 +143,7 @@ export default {
       checked: true,
       config: {},
       psd: 'password',
-      active:0
+      active: 0
     };
   },
   created () {
@@ -147,9 +156,9 @@ export default {
     onClickLeft () {
       this.$router.push({ path: '/user' })
     },
-    onClickTab(name,title){
-        const PATH=name===0?'/login':'/register'
-        this.$router.push({path:PATH})
+    onClickTab (name, title) {
+      const PATH = name === 0 ? '/login' : '/register'
+      this.$router.push({ path: PATH })
     },
     start () {
       Fetch('/index/webconfig', { type: 'bg' }).then(res => {
@@ -271,14 +280,14 @@ export default {
   padding-top: 1px;
   padding-bottom: 20px;
   background-color: #ffffff;
-//   min-height: 100%;
-    height: 100vh;
+  //   min-height: 100%;
+  height: 100vh;
 }
 
 .form {
   width: 100%;
   padding: 0 44px;
-  margin: 78px auto 0 auto;
+  margin: 30px auto 0 auto;
   z-index: 2;
 }
 
@@ -384,7 +393,7 @@ export default {
 
 .form .item_forget .forgetpwd {
   color: #999999;
-  font-size: 14px;
+  font-size: 28px;
   width: 100%;
   line-height: 20px;
 }
@@ -416,8 +425,8 @@ export default {
   width: 100%;
   max-width: 750px;
   position: absolute;
-  margin-top: 20px;
-  height: 94px;
+  //   margin-top: 40px;
+  height: 188px;
   background: url(./images/login_bg.png) no-repeat top center;
   background-size: 100% 100%;
   left: 0;
@@ -433,14 +442,34 @@ export default {
     margin: 40px auto 0 auto;
   }
 }
-
 </style>
-<style lang="scss">
-  .forget{
-.van-icon .van-icon-question-o{
+<style lang="scss" scoped>
+.forget {
+  .van-icon .van-icon-question-o {
     font-size: 40px;
-    color:$theme-color;
+    color: $theme-color;
+  }
 }
+.login-top {
+  @include background('~@/assets/images/login-bg.jpeg', 750px, 360px);
+  margin-top: 90px;
+}
+.login-content {
+  background: #ffffff;
+  border-radius: 12px;
+  margin-top: 2vw;
+  width: 96%;
+  height: 800px;
+  box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  margin: -200px auto 0 auto;
+  overflow: hidden;
+}
+.change-pos {
+  margin: 40px auto 20px auto;
+  @include flex-start();
+  margin-left: 30px;
+  font-size: 26px;
 }
 </style>
 

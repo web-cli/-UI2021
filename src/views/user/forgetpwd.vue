@@ -1,27 +1,79 @@
 <template>
     <div class="main">
-		<div class="header">
-		    <div class="head">
-		        <a @click="$router.back()" class="back"></a>
-		        修改密码
-		    </div>
-		</div>
-        <div class="bg" v-bind:style="{'background-image':bg}"></div>
-        <router-link to="/login" class="back"></router-link>
-        <div class="title"></div>
+	    <van-nav-bar title="修改密码" left-arrow fixed @click-left="$router.back()" />
+           <div class="login-content">
+      <van-form @submit="handleSubmit" class="form">
+        <van-field
+          v-model.trim="data.mobile"
+          name="账号"
+          label="登录账号"
+          right-icon="cross"
+          @click-right-icon="clear()"
+          placeholder="请输入手机号码"
+        />
+               <van-field
+          name="smscode"
+          v-model.trim="data.code"
+          center
+          clearable
+          label="短信验证码"
+          placeholder="请输入验证码"
+        >
+          <template #button>
+            <!-- <van-button size="small" type="info">发送验证码</van-button> -->
+            <van-count-down :time="time" @finish="timeCall">
+              <template v-slot="timeData">
+                <van-button round type="info" @click="sendcode" size="small">{{
+                  timeData.seconds > 0 ? timeData.seconds : '获取验证码'
+                }}</van-button>
+              </template>
+            </van-count-down>
+          </template>
+        </van-field>
+        <van-field
+          v-model.trim="data.passwd"
+          :type="psd == 'password' ? 'password' : 'text'"
+          name="密码"
+          label="新密码"
+          placeholder="请设置新登录密码"
+          :right-icon="psd == 'password' ? 'closed-eye' : 'eye-o'"
+          @click-right-icon="show_psd"
+        />
+        <van-field
+          v-model.trim="data.npasswd"
+          :type="psd == 'password' ? 'password' : 'text'"
+          name="密码"
+          label="新密码"
+          placeholder="请再输入新密码"
+          :right-icon="psd == 'password' ? 'closed-eye' : 'eye-o'"
+          @click-right-icon="show_psd"
+        />
+ 
+        <div style="margin: 16px">
+          <van-button round block type="info" native-type="submit"  @click="handleSubmit"
+            >确认修改</van-button
+          >
+        </div>
+      </van-form>
+      <div class="footer_bg"></div>
+    </div>
 
-        <form class="form" @submit.prevent="handleSubmit">
+        <!-- <div class="bg" v-bind:style="{'background-image':bg}"></div>
+        <router-link to="/login" class="back"></router-link> -->
+        <!-- <div class="title"></div> -->
+
+        <!-- <form class="form" @submit.prevent="handleSubmit">
             <div class="content clearfix">
                 <span class="left_icon phone_icon"></span>
                 <input class="inp" v-model.trim="data.mobile" type="text" placeholder="请输入手机号码">
-                <!-- <span class="right right_icon clear_icon"></span> -->
-            </div>
+                <span class="right right_icon clear_icon"></span>
+            </div> -->
             <!-- <div class="content clearfix">
                 <span class="left_icon captcha_icon"></span>
                 <input class="inp inp1" type="text" v-model.trim="data.image_code" placeholder="请输入验证码">
                 <img class="right click_code image_code" :src="base64Image" @click="getCode"/>
             </div> -->
-            <div class="content clearfix">
+            <!-- <div class="content clearfix">
                 <span class="left_icon sms_icon"></span>
                 <input class="inp inp1" v-model.trim="data.code" type="text" placeholder="输入短信验证码">
                 <span class="right getsms" @click="sendcode">
@@ -42,11 +94,11 @@
             </div>
             <div class="content btn_content clearfix">
                 <button type="submit" class="btn" id="btn">确认修改</button>
-            </div>
+            </div> -->
  <!--           <div class="content btn_content clearfix">
                 <router-link to="/resetpaypwd"><button  class="btn" id="btn">去修改支付密码</button> </router-link> 
             </div> -->
-        </form>
+        <!-- </form> -->
 
     </div>
 </template>
@@ -65,6 +117,7 @@
             return {
                 bg: '',
                 data: {},
+                  psd: 'password',
                 base64Image: '',
                 time: 0,
                 is_send: false
@@ -77,6 +130,17 @@
             this.start();
         },
         methods: {
+              clear () {
+      this.data.mobile = '';
+    },
+               show_psd () {
+      console.log(this.psd)
+      if (this.psd == 'password') {
+        this.psd = 'text';
+      } else {
+        this.psd = 'password';
+      }
+    },
             start() {
                 Fetch('/index/webconfig', {type: 'bg'}).then(res => {
                     this.bg = 'url("' + res.data.forget + '")';
@@ -153,7 +217,7 @@
         position: relative;
         padding-top: 1px;
         padding-bottom: 20px;
-
+        height: 100vh;
         .image_code {
             font-size: .4rem;
             cursor: pointer;
@@ -200,9 +264,10 @@
         }
 
         .form {
-            width: 67%;
+            width: 100%;
             position: relative;
-            margin: 20% auto;
+            // margin: 20% auto;
+            padding: 40px;
             z-index: 2;
         }
 
@@ -339,6 +404,38 @@
             }
         }
     }
+</style>
+<style lang="scss" scoped>
+.login-content {
+  background: #ffffff;
+  border-radius: 12px;
+  margin-top: 2vw;
+  width: 96%;
+  height: 600px;
+  box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  margin: 160px auto 0 auto;
+  overflow: hidden;
+}
+.change-pos {
+  margin: 40px auto 20px auto;
+  @include flex-start();
+  margin-left: 30px;
+  font-size: 26px;
+}
+.footer_bg {
+  width: 100%;
+  max-width: 750px;
+  position: absolute;
+  //   margin-top: 40px;
+  height: 188px;
+  background: url(./images/login_bg.png) no-repeat top center;
+  background-size: 100% 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
 </style>
 
 

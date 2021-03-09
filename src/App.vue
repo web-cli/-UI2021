@@ -165,7 +165,7 @@
 		width: 100%;
 		max-width: 750px;
 		margin: 0 auto;
-
+		background: #f2f2f2;
 
 		// .kefu {
 		// 	position: fixed;
