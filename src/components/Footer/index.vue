@@ -92,8 +92,8 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-/deep/.icon-invest {
-  font-size: 22px;
+<style lang="scss">
+.iconfont.icon-invest {
+  font-size: 0.36rem;
 }
 </style>
