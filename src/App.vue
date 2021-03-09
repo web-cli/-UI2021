@@ -1,7 +1,7 @@
 <template>
   <div id="app" :style="show_footer ? 'margin-bottom: 65px; height:auto' : ''">
     <router-view></router-view>
-    <Footer :show="show_footer" />
+    <Footer :show="show_footer" :footerType="footer_type" />
     <!-- <div class="footer_nav" v-if="show_footer && footer_type === 'n2'">
 			<div class="indexnav">
 				<div class="nav_top btn-group" >
