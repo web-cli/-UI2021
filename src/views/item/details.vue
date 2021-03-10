@@ -1,14 +1,20 @@
 <template>
   <div class="invest-detail" style="margin-bottom: 65px; height: auto;">
-    <div class="header">
+    <!-- <div class="header">
       <div class="head">
         <router-link to="/item" class="back"></router-link>
         投资详情
       </div>
-    </div>
+    </div> -->
+        <van-nav-bar
+      title="投资详情"
+      left-arrow
+      fixed
+      @click-left="$router.push({path:'/item'})"
+    />
 
     <!-- invest-detail -->
-    <div class="banner">
+    <div class="banner" >
       <img :src="data.thumb" alt="" />
       <div class="desc">{{ data.title }}</div>
     </div>
@@ -525,5 +531,8 @@ input[type='radio']:checked {
   position: fixed;
   right: 18px;
   bottom: 12px;
+}
+.banner{
+  margin-top: 100px;
 }
 </style>
