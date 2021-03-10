@@ -74,27 +74,27 @@ export default {
           show: this.isN2,
           text: '任务',
           name: 'task',
-          icon: 'todo-list-o',
+          icon: 'todo-list',
           to: '/index'
         },
         {
           show: this.isN2 || this.isN1,
           text: '首页',
           name: 'home',
-          icon: 'wap-home-o',
+          icon: 'wap-home',
           to: '/tree'
         },
         {
           show: this.isN2,
           text: '客服',
           name: 'kefu',
-          icon: 'chat-o'
+          icon: 'chat'
         },
         {
           show: this.isN2 || this.isN1,
           text: '我的',
           name: 'mine',
-          icon: 'user-o',
+          icon: 'manager',
           to: '/user'
         }
       ]
@@ -112,8 +112,8 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-/deep/.icon-invest {
-  font-size: 22px;
+<style lang="scss">
+.iconfont.icon-invest {
+  font-size: 0.4rem;
 }
 </style>
