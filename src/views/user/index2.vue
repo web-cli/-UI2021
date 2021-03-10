@@ -850,7 +850,7 @@ export default {
   }
   align-items: center;
   .left_box_info2 {
-    color: $primary-color;
+    color: $money;
     font-size: 28px;
     font-weight: 500;
     margin-top: 16px;

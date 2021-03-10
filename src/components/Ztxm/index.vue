@@ -79,4 +79,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card-item{
+  margin-bottom: 50px !important;
+}
+</style>

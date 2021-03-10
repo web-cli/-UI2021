@@ -1,7 +1,24 @@
 <template>
 	<div>
 		<div class="user_n1">
-			<div class="top">
+						<div class="login-top new-user">
+					<div class="left">
+				<svg class="svg iconImg" aria-hidden="true">
+					<use xlink:href="#icontongxunlutouxiang"></use>
+				</svg>
+					</div>
+					<div>
+					<p>
+							Hi ,{{data.mobile}} <div class="vip_leave" :class="data.vip_name" v-if="data.vip_name !== '普通会员'"></div>
+					</p>
+					<div class="vip">
+							{{data.vip_name}}
+					</div>
+						
+			
+					</div>
+				</div>
+			<!-- <div class="top">
 				<div class="avator"></div>
 				<div class="avator_right">
 					<div class="avator_right_info1">
@@ -10,29 +27,36 @@
 						{{data.vip_name}}
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 
 			<div class="mt0">
 				<div class="left">
-					<div class="left_box_icon1"></div>
+					<!-- <div class="left_box_icon1"></div> -->
+							<svg class="svg iconImg" aria-hidden="true">
+					<use xlink:href="#iconzhanghu1"></use>
+				</svg>
 					<div class="left_box">
 						<div class="left_box_info1">
 							账户余额(元)
 						</div>
-						<div class="left_box_info2">
+						<div class="left_box_info2 money">
 							{{data.money}} </div>
 					</div>
 					<div class="left_arrow"></div>
 				</div>
 				<div class="line"></div>
 				<div class="left">
-					<div class="left_box_icon2"></div> 
+					<!-- <div class="left_box_icon2"></div>  -->
+							<svg class="svg iconImg" aria-hidden="true">
+					<use xlink:href="#iconjifen"></use>
+				</svg>
+					
 					<div class="left_box">
 						<div class="left_box_info1">
 							积分
 						</div>
-						<div class="left_box_info2">
+						<div class="left_box_info2 money">
 							{{data.integral}} </div>
 					</div>
 					<div class="left_arrow"></div>
@@ -49,22 +73,38 @@
 						<div class="a-text">每日登录即可完成任务</div>
 					</span>
 					<router-link to="" style="height: 30px;">
-						<a v-if="mission.qiandao_status == false"  class="cbtn" @click="checkin2()">去签到</a>
-						<a v-if="mission.qiandao_status == true" class="cbtn" style="background-color: #d6d6d6;" >已签到</a>
+						<a v-if="mission.qiandao_status == false"   @click="checkin2()">
+							
+							<van-button round block type="info" native-type="submit" class="small-btn"
+            >去签到</van-button>
+						</a>
+						<a v-if="mission.qiandao_status == true" style="background-color: #d6d6d6;" >
+								<van-button round block type="info" native-type="submit" class="small-btn" disabled
+            >已签到</van-button>
+						</a>
 					</router-link>
 				</router-link>
 			</div>
 			<div class="mt1">
 				<router-link to="" class="user_item">
-					<span class="icon"><img src="./image/huanbao/yqhy.png" alt="" /></span>
+					<!-- <span class="icon"><img src="./image/huanbao/yqhy.png" alt="" /></span> -->
+									<svg class="svg icon" aria-hidden="true">
+					<use xlink:href="#iconyaoqing"></use>
+				</svg>
 					<span class="info">
 						<div class="h-title ">邀请好友</div>
 						<div class="a-text">奖励5元起 </div>
 						<div class="a-text">邀请好友投资成功奖励5元起</div>
 					</span>
 					<router-link to="/share" style="height: 30px;">
-						<a v-if="mission.invest_status == false" class="cbtn">去完成</a>
-						 <a v-if="mission.invest_status == true" class="cbtn" style="background-color: #d6d6d6;">已完成</a>
+						<a v-if="mission.invest_status == false" >
+								<van-button round block type="info" native-type="submit" class="small-btn"
+            >去完成</van-button>
+						</a>
+						 <a v-if="mission.invest_status == true"  style="background-color: #d6d6d6;">
+							 	<van-button round block type="info" native-type="submit" class="small-btn" disabled
+            >已完成</van-button>
+						 </a>
 					</router-link>
 				</router-link>
 			</div>
@@ -77,8 +117,14 @@
 						<div class="a-text">有几率获取2000现金大奖</div>
 					</div>
 					<router-link to="/baoku" style="height: 30px;">
-						<a v-if="mission.yue_bao_status == false" class="cbtn">去完成</a>
-						<a v-if="mission.yue_bao_status == true" class="cbtn" style="background-color: #d6d6d6;">已完成</a>
+						<a v-if="mission.yue_bao_status == false">
+								<van-button round block type="info" native-type="submit" class="small-btn"
+            >去完成</van-button>
+						</a>
+						<a v-if="mission.yue_bao_status == true"  style="background-color: #d6d6d6;">
+							<van-button round block type="info" native-type="submit" class="small-btn" disabled
+            >已完成</van-button>
+						</a>
 					</router-link>
 				</router-link>
 			</div>
@@ -105,7 +151,8 @@
 						<div class="a-text">当日投入即可完成任务</div>
 					</span>
 					<router-link to="/item" style="height: 30px;">
-						<a class="cbtn">去完成</a>
+							<van-button round block type="info" native-type="submit" class="small-btn"
+            >去完成</van-button>
 						
 					</router-link>
 				</router-link>
@@ -234,13 +281,16 @@
 		text-align: center;
 		font-size: 12px;
 		line-height: 1.7;
-		color: #a0a0a0;
-		padding-bottom: 1.25rem;
+		color: #6b7d99;
+		padding-bottom: 0;
 	}
 
 	.info {
 		display: flex;
 		flex-direction: column;
+		// div{
+		// 	margin-top: 8px;
+		// }
 	}
 
 	.user_n1 {
@@ -469,8 +519,13 @@
 
 	.user_n1 .mt1 {
 		background-color: #fff;
-		border-bottom: 4px solid #f4f4f4;
-		padding-left: 7.4%;
+		border: 4px solid #f4f4f4;
+		// padding-left: 7.4%;
+		padding-left: 20px;
+		margin: 0px 20px;
+		border-radius: 20px;
+		margin-bottom: 10px;
+		padding:10px 0;
 	}
 
 	.user_n1 .mt1 .user_item {
@@ -480,10 +535,9 @@
 		width: 100%;
 		-webkit-box-align: center;
 		-ms-flex-align: center;
-		align-items: center;
-		height: 47px;
-		margin-top: 20px;
-		margin-bottom: 20px;
+		align-items: flex-start;
+		height: 98px;
+		margin:20px;
 
 	}
 
@@ -491,8 +545,8 @@
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
-		width: 48px;
-		height: 48px;
+		width: 96px;
+		height: 96px;
 		-webkit-box-pack: center;
 		-ms-flex-pack: center;
 		justify-content: center;
@@ -515,12 +569,12 @@
 		-webkit-box-align: center;
 		-ms-flex-align: center;
 		align-items: center;
-		height: 47px;
+		// height: 47px;
 		width: 55%;
 		// -webkit-box-flex: 1;
 		// -ms-flex: 1 1 auto;
 		// flex: 1 1 auto;
-		font-size: 15px;
+		font-size: 26px;
 		color: #aaaaaa;
 	}
 
@@ -530,10 +584,10 @@
 
 	.h-title {
 		width: 100%;
-		font-size: 15px;
+		font-size: 30px;
 		color: #151515;
-		font-weight: 700;
-		line-height: 15px;
+		font-weight: 500;
+		// line-height: 15px;
 	}
 
 	.a-text {
@@ -543,13 +597,16 @@
 	}
 
 	.today {
-		font-size: 16px;
+		font-size: 36px;
 		color: #272727;
 		font-weight: 700;
-		border-left: 5px solid #1ca3ff;
+		border-left: 10px solid #1ca3ff;
+		padding: 10px 0px;
 		padding-left: 15px;
 		margin-bottom: 30px;
-		margin-top: 15px;
+		display: flex;
+		align-items: center;
+		margin-top: 50px;
 	}
 
 
@@ -624,8 +681,8 @@
 	}
 
 	.left_box_info1 {
-		color: #878787;
-		font-size: 12px;
+		color: #242e39;
+		font-size: 24px;
 		margin-bottom: 5px;
 	}
 
@@ -650,10 +707,55 @@
 		background-size: contain;
 	}
 	.line{
-		    width: 3px;
-		    height: 30px;
+		    width: 6px;
+		    height: 90px;
 		    background: #eee;
 		    // margin: 0 .375rem;
 	}
 	
+</style>
+<style lang="scss" scoped>
+.new-user {
+  color: #ffffff;
+  font-size: 28px;
+  padding: 0px 40px;
+  height: 280px;
+  @include flex-start();
+  .pos {
+    margin: 16px 0;
+  }
+  svg {
+    margin-right: 20px;
+  }
+  span {
+    color: #ffffff;
+    // font-size: 13px;
+    margin-left: 20px;
+  }
+	.vip{
+		color: $orange;
+		margin-top: 10px;
+	}
+}
+.mt0{
+	height: 140px;
+	  box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
+}
+.money{
+	margin-top: 10px;
+}
+.user_n1{
+	background: #ffffff;
+}
+.info{
+	margin-left: 16px;
+	div{
+		margin-bottom: 6px;
+	}
+}
+.small-btn{
+	width: 180px;
+	margin-top: 20px;
+	margin-right: 40px;
+}
 </style>

@@ -41,10 +41,10 @@ export default {
   watch: {
     // 解决登录返回 下方tab问题
     $route (to, from) {
-      if(from.path==='/login'){
-        const item = this.tarbarList.find(item=>item.to===from.path) || {}
+      // if(from.path==='/login'){
+        const item = this.tarbarList.find(item=>item.to===to.path) || {}
         this.active = item.name || 'home'
-      }
+      // }
       // console.log(this.active);
     }
   },
