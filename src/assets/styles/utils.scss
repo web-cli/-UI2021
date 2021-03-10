@@ -82,6 +82,16 @@
   bottom: 0;
 }
 $theme-color:red;
-.test{
-  color: $theme-color;
+// 蓝色背景 头部
+.login-top {
+  @include background('~@/assets/images/login-bg.jpeg', 750px, 360px);
+
+}
+.iconImg{
+  @include wh(80px);
+}
+.money{
+  color: $theme-color !important;
+  font-weight: 500;
+  font-size: 28px;
 }

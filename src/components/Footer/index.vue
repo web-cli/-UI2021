@@ -1,18 +1,25 @@
 <template>
-  <van-tabbar v-if="show" v-model="active" :active-color="activeColor" @change="handleChange">
-    <van-tabbar-item
-      v-for="item of tarbarList"
-      :key="item.name"
-      :name="item.name"
-      :v-show="item.show"
-      :to="item.to"
-      :icon="item.icon"
-      :icon-prefix="item.iconPrefix || 'van-icon'"
-      :size="item.size"
+  <div>
+    <van-tabbar
+      v-if="show"
+      v-model="active"
+      :active-color="activeColor"
+      @change="handleChange"
     >
-      {{ item.text }}
-    </van-tabbar-item>
-  </van-tabbar>
+      <van-tabbar-item
+        v-for="item of tarbarList"
+        :key="item.name"
+        :name="item.name"
+        :v-show="item.show"
+        :to="item.to"
+        :icon="item.icon"
+        :icon-prefix="item.iconPrefix || 'van-icon'"
+        :size="item.size"
+      >
+        {{ item.text }}
+      </van-tabbar-item>
+    </van-tabbar>
+  </div>
 </template>
 <script>
 export default {
@@ -28,18 +35,28 @@ export default {
     },
     kefu: {
       type: Function,
-      default: () => {}
+      default: () => { }
+    }
+  },
+  watch: {
+    // 解决登录返回 下方tab问题
+    $route (to, from) {
+      if(from.path==='/login'){
+        const item = this.tarbarList.find(item=>item.to===from.path) || {}
+        this.active = item.name || 'home'
+      }
+      // console.log(this.active);
     }
   },
   computed: {
-    isN1() {
+    isN1 () {
       return this.footerType === 'n1';
     },
-    isN2() {
+    isN2 () {
       return this.footerType === 'n2';
     }
   },
-  data() {
+  data () {
     return {
       active: 'home',
       activeColor: '#2c6dfb',
@@ -83,8 +100,11 @@ export default {
       ]
     };
   },
+  mounted () {
+    console.log(this.$route)
+  },
   methods: {
-    handleChange() {
+    handleChange () {
       if (this.active === 'kefu') {
         this.kefu();
       }

@@ -165,7 +165,7 @@ export default {
 }
 		
 #app {
-  min-height: 100%;
+  // min-height: 100%;
   width: 100%;
   max-width: 750px;
   margin: 0 auto;

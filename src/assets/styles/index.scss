@@ -3,9 +3,21 @@
 */
 @import 'utils';
 $theme-color: #1989fa;
-
+body{
+  font-size: 28px;
+}
 $primary-color: #2c6dfb;
 $orange: #fe7b17; // 强调色
 $black: #242e39; // 重点文字
 $color: #6b7d99; // 一般文字
 $money: #EE0A24;  // 钱的颜色
+
+.small-btn{
+  // @include wh(40px);
+  width: 120px;
+  height: 60px;
+}
+.f-text{
+  color: $black;
+  font-size: 28px;
+}

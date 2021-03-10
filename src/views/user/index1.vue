@@ -378,7 +378,6 @@
 		font-size: 13px;
 		color: #fefefe;
 	}
-
 	.user_n2 .notification_box {
 		display: -webkit-box;
 		display: -ms-flexbox;
@@ -387,12 +386,13 @@
 		-ms-flex-pack: justify;
 		justify-content: space-between;
 		width: 100%;
-		height: 34px;
+		height: 64px;
 		-webkit-box-align: center;
 		-ms-flex-align: center;
 		align-items: center;
 		padding: 0 5%;
-		background-color: #f5e2cd;
+		background-color: #fe7b17;
+		color: #ffffff;
 	}
 
 	.user_n2 .notification_box .left {
@@ -406,8 +406,8 @@
 	}
 
 	.user_n2 .notification_box /deep/ .van-notice-bar {
-		height: 34px;
-		background-color: #f5e2cd;
+		height: 64px;
+		background-color: #fe7b17;
 	}
 
 	.user_n2 .notification_box .left .icon {
@@ -422,7 +422,7 @@
 	}
 
 	.user_n2 .notification_box .left .info {
-		color: #7f6d58;
+		color: #ffffff;
 		font-size: 13px;
 		width: 100%;
 	}
@@ -438,7 +438,7 @@
 
 	.user_n2 .notification_box .right .info {
 		font-size: 12px;
-		color: #7f6d58;
+		color: #ffffff;
 		margin-right: 6px;
 	}
 
