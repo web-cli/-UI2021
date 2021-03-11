@@ -38,12 +38,13 @@
 
       <van-col span="24">
         <van-divider />
-        <div class="process mt-16 bg-w">
+        <!-- <div class="process mt-16 bg-w">
           <div class="percent_box">
             <div class="percent" :style="'width:' + data.schedule + '%'"></div>
           </div>
           <span class="percent_num">{{ data.schedule }}%</span>
-        </div>
+        </div> -->
+        <Process :schedule="data.schedule" style="marginBottom: 10px"/>
       </van-col>
     </van-row>
 
@@ -204,10 +205,11 @@
 
 <script>
 import Fetch from '../../utils/fetch';
+import Process from '../../components/Process'
 
 export default {
   name: 'index',
-  components: {},
+  components: { Process },
   data() {
     return {
       data: {},

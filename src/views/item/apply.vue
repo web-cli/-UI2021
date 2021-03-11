@@ -339,6 +339,7 @@ body {
   background: #473e51;
   text-align: left;
   margin-bottom: 40px;
+	// width: 248px;
 }
 
 .mt0 .mt0_main .mt0_content .mt0_item .mt0_item_money {
