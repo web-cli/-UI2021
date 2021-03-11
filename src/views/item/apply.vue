@@ -1,11 +1,18 @@
 <template>
   <div class="invest-detail" style="height: 100vh">
-    <van-nav-bar
+    <div class="header" style="height: 46px">
+      <div class="head" style="height: 46px; line-height: 46px;font-size: 16px;">
+        <a @click="back()" class="back invest-back"></a>
+        立即投标
+      </div>
+    </div>
+
+    <!-- <van-nav-bar
       title="立即投标"
       left-arrow
       fixed
       @click-left="$router.push({ path: `/item/${id}` })"
-    />
+    /> --> 
 
     <div class="mt0">
       <div class="mt0_main">
@@ -46,14 +53,7 @@
           </div>
         </div>
       </div>
-      <!-- <div class="box">
-        <div class="remian_money">
-          最低起投 <span class="yellow">{{ data.min }}</span
-          >元，加一次为<span class="yellow">{{ data.min }}</span
-          >元
-        </div>
-      </div> -->
-
+  
       <div class="box">
         <div class="item clearfix">
           <!-- <span class="icon"></span> -->
@@ -563,4 +563,6 @@ body {
 .tip {
   color: #ccc;
 }
+
+
 </style>
