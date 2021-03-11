@@ -1,7 +1,7 @@
 <template>
   <div class="invest-detail" style="height: 100vh">
-    <div class="header" style="height: 46px">
-      <div class="head" style="height: 46px; line-height: 46px;font-size: 16px;">
+    <div class="header" style="height: 46px;">
+      <div class="head" style="height: 46px; line-height: 46px;font-size: 16px; z-index: 2;">
         <a @click="back()" class="back invest-back"></a>
         立即投标
       </div>
