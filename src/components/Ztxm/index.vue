@@ -1,8 +1,9 @@
 <template>
   <div class="card bg-w mt-16">
     <div class="card-title">
-      <i class="icon iconfont icon-financial"></i>
-      在投项目
+      <!-- <i class="icon iconfont icon-financial"></i>
+      在投项目 -->
+      <slot></slot>
     </div>
     <div class="card-item" v-for="(item, index) of data.list" :key="index">
       <div class="img-box">
@@ -81,7 +82,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-item{
-  margin-bottom: 50px !important;
-}
+
 </style>

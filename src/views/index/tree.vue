@@ -11,7 +11,7 @@
 				 :options="playerOptions"
 			></video-player>
 			<!-- <ul class="message">
-				<li @click="">
+				<li>
 					<router-link :to="'/prize'" >
 						<img src="./image/huanbao/ydbg.png">
 					</router-link>
@@ -22,84 +22,83 @@
 			<img src="./image/huanbao/jiaoshi.png" alt="" style="width: 80%;margin-left: 10%;margin-top: -30px;">
 		</div> -->
 		
-		<div class="list_outer" v-if="footer_type === 'n2'">
-			
-			<ul>
-				<li id="left" style="height: 150px; text-align: center">
+		<van-row class="bg-w card" style="margin-bottom: 16px" gutter="16">
+			<van-col span="12">
 					<router-link :to="'/item'">
-						<img src="./image/huanbao/xiangmu.png" style="height: 150px;" @click="">
+						<img src="./image/huanbao/xiangmu.png" style="height: 150px; width: 100% ">
 					</router-link>
-				</li>
-				<li id="right" style="height: 150px;text-align: center">
+			</van-col>
+
+			<van-col span="12">
 					<router-link :to="'/baoku'">
-						<img src="./image/huanbao/sbaoku.jpg"  style="height: 150px;" @click="">
+						<img src="./image/huanbao/sbaoku.jpg"  style="height: 150px; width: 100%">
 					</router-link>
-				</li>
-			</ul>
-		</div>
-		<div class="marquee_outer" v-if="footer_type === 'n1'">
+			</van-col>
+		</van-row>
+
+
+		<div class="marquee_outer mt-16" style="height: 40px" v-if="footer_type === 'n1'">
 			<van-notice-bar text="欢迎您的加入,请分享给您身边的朋友." left-icon="volume-o" background="#ffffff"></van-notice-bar>
 		</div>
-		<div class="marquee_outer" v-else>
+		<div class="marquee_outer mt-16" style="height: 40px" v-else>
 			<van-notice-bar :text="data.notice" left-icon="volume-o" background="#ffffff"></van-notice-bar>
 		</div>
 
-		<div class="jchd" style="margin-top: 10px;">
+		<!-- <div class="jchd" style="margin-top: 10px;">
 			<img src="./image/huanbao/huodong.png" style="background-size: 100% 100%;height: 20px;margin-top: 10px;">
+		</div> -->
+	<div class="card mt-16">
+		<div class="card-title">
+				<svg class="svg iconImg" aria-hidden="true" style="width: 22px;height: 22px;vertical-align: text-bottom;">
+					<use xlink:href="#iconhuodong"></use>
+				</svg>
+				精彩活动
 		</div>
-		<!-- 环保知识 -->
-		<div class="list_outer">
-			<ul>
-				<li>
-					<router-link :to="''">
-						<img src="./image/huanbao/qiandao.png" @click="checkin2">
-						<div class="outer_wrap">
 
-						</div>
+			<van-row gutter="20" class="activity">
+				<van-col span="12">
+						<router-link :to="''">
+						<img src="./image/huanbao/qiandao.png" @click="checkin2" style="width: 100%" />
 					</router-link>
-				</li>
-<!-- 				<li v-if="footer_type === 'n2'">
-					<router-link :to="'/scratch_card'" >
-						<img src="./image/huanbao/guagua.png" @click="">
-						<div class="outer_wrap">
+				</van-col>
 
-						</div>
+					<van-col span="12">
+							<router-link :to="'/sport_event' ">
+						<img src="./image/huanbao/yundong.png" style="width: 100%" />
 					</router-link>
-				</li> -->
-				<li>
-					<router-link :to="'/sport_event' ">
-						<img src="./image/huanbao/yundong.png" @click="">
-						<div class="outer_wrap">
-
-						</div>
-					</router-link>
-				</li>
-<!-- 				<li>
-					<router-link :to="'/start'">
-						<img src="./image/huanbao/kantu.png" @click="">
-						<div class="outer_wrap">
-
-						</div>
-					</router-link>
-				</li> -->
-				<li>
-					<router-link :to="'/prize'">
-						<img src="./image/huanbao/zhuanpan.png" @click="">
+				</van-col>
+					<van-col span="12">
+							<router-link :to="'/prize'">
+						<img src="./image/huanbao/zhuanpan.png" style="width: 100%" />
 
 					</router-link>
-				</li>
-				<li>
-					<router-link :to="'/goods'">
-						<img src="./image/huanbao/shangcheng.png" @click="">
+				</van-col>
+					<van-col span="12">
+							<router-link :to="'/goods'">
+						<img src="./image/huanbao/shangcheng.png" style="width: 100%" />
 					</router-link>
-				</li>
-			</ul>
-		</div>
+				</van-col>
+
+
+			</van-row>
 		
-		<div class="jchd" style="margin-top: 10px;">
-			<img src="./image/huanbao/hot.png" style="background-size: 100% 100%;height: 30px;margin-top: 10px;">
-		</div>
+	</div>
+	
 
+	
+		
+		<!-- <div class="jchd" style="margin-top: 10px;">
+			<img src="./image/huanbao/hot.png" style="background-size: 100% 100%;height: 30px;margin-top: 10px;">
+		</div> -->
+
+
+		<Ztxm :data="hotitem" class="mt-16">
+			<svg class="svg iconImg" aria-hidden="true" style="width: 30px;height: 30px;vertical-align: text-bottom;">
+					<use xlink:href="#icontuijian"></use>
+				</svg>
+				热门推荐
+		</Ztxm>
+<!-- 
 		<div class="mt0" v-for="item in hotitem.list" @click="goToDetail(item.id,item.schedule)" >
 			<div class="img_box">
 				<img class="img" :src="item.thumb" alt="">
@@ -139,7 +138,7 @@
 				<div class="btn_touzi_full" style="position: absolute;bottom: 0;"  v-else>项目结束</div>
 			</div>
 		
-		</div>
+		</div> -->
 		<div class="mask" v-show="ad_show" z-index="999">
 			<div class="ops">
 				<div class="close">
@@ -202,6 +201,8 @@
 		NoticeBar,
 		Overlay,Col, Row,Dialog
 	} from "vant";
+	import Ztxm from '../../components/Ztxm'
+	import Title from '../../components/Title'
 
 	Vue.use(NoticeBar).use(Overlay);
 
@@ -211,7 +212,9 @@
 			VanSwipe: Swipe,
 			VanSwipeItem: SwipeItem,
 			[Dialog.Component.name]: Dialog.Component,
-			videoPlayer
+			videoPlayer,
+			Ztxm,
+			Title
 		},
 		data() {
 			return {

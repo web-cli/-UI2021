@@ -18,8 +18,16 @@
       </van-swipe>
     </van-notice-bar>
 
+    
+
     <!-- 在投项目	 -->
-    <Ztxm :data="data" />
+    <Ztxm :data="data" >
+
+      	<svg class="svg iconImg" aria-hidden="true" style="width: 23px;height: 23px;vertical-align: text-bottom;">
+					<use xlink:href="#icon-financial"></use>
+				</svg>
+				在投项目
+    </Ztxm>
 
     <!-- <div class="mt0" v-for="item in data.list" @click="goToDetail(item.id, item.schedule)">
       <div class="img_box">
@@ -618,5 +626,28 @@ export default {
       }
     }
   }
+  	/deep/ .marquee_outer .van-notice-bar {}
+
+	/deep/ .marquee_outer {
+		box-shadow: none;
+		background: none;
+	}
+
+	/deep/ .marquee_outer .van-icon-volume-o::before {
+		content: '';
+		width: 22px;
+		height: 23px;
+		background: url(../../assets/images/horn.png) no-repeat center center;
+		background-size: 100% 100%;
+		margin-right: 6px;
+	}
+
+	/deep/ .van-notice-bar__content {
+		color: #202020;
+	}
+
+	/deep/ .van-notice-bar {
+		padding: 0 7px;
+	}
 }
 </style>
