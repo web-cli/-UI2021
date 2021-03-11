@@ -1,9 +1,10 @@
 <template>
   <div class="pro_wrap">
-    <div class="process">
+    <!-- <div class="process">
       <div class="percent" :style="`width: ${schedule} + '%'`"></div>
     </div>
-    <span class="percent_num">{{schedule}}%</span>
+    <span class="percent_num">{{schedule}}%</span> -->
+		<van-progress :percentage="schedule" stroke-width="10"  />
   </div>
 </template>
 
@@ -24,11 +25,13 @@ export default {
 <style lang="scss" scoped>
 
 .pro_wrap {
-  width: 100%;
+  width: 600px;
   position: relative;
+	margin: 0 auto;
   height: 17px;
   line-height: 17px;
-  margin-top: 10px;
+  margin-top: 20px;
+	// @include flex-center();
   .process {
 		background: #3960e81c;
 		border: 1px solid #2bb8ee78;
