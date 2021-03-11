@@ -398,7 +398,7 @@
 		width: 20px;
 		height: 20px;
 		border-radius: 20px;
-		background-image: url();
+		// background-image: url();
 		background-repeat: no-repeat;
 		background-size: 12px 12px;
 		position: relative;
@@ -429,7 +429,7 @@
 		display: inline-block;
 		width: 12px;
 		height: 12px;
-		background-image: url();
+		// background-image: url();
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center;
@@ -439,7 +439,7 @@
 		display: inline-block;
 		width: 23px;
 		height: 23px;
-		background-image: url();
+		// background-image: url();
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center;
@@ -520,7 +520,7 @@
 		display: inline-block;
 		width: 20px;
 		height: 20px;
-		background-image: url();
+		// background-image: url();
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center;
@@ -552,7 +552,7 @@
 		display: inline-block;
 		width: 12px;
 		height: 16px;
-		background-image: url();
+		// background-image: url();
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center;

@@ -168,7 +168,7 @@
 				width: 95%;
 				height: 160px;
 				margin: 150px auto;
-				background: url() no-repeat center/100%;
+				// background: url() no-repeat center/100%;
 				padding-top: 70px;
 			}
 
