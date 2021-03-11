@@ -10,6 +10,8 @@
         <div class="desc">{{ item.title }}</div>
       </div>
 
+      <Process :schedule="item.schedule" />
+
       <van-row class="card-desc">
         <van-col span="12" v-if="item.type === 7"> 产品小时利率：{{ item.rate }}% </van-col>
         <van-col span="12" v-if="item.type === 7"> 每小时收益：{{ item.apr_money }}元 </van-col>
@@ -33,9 +35,6 @@
           积分：{{ item.min }}
         </van-col>
 
-        <!-- todo 进度条 -->
-        <van-col span="12"> 进度： {{ item.schedule }}% </van-col>
-
         <van-col style="margin-top: 12px" span="24">
           <van-button
             color="linear-gradient(to right,  #e89d4c, #ff6034)"
@@ -54,8 +53,10 @@
 </template>
 
 <script>
+import Process from '../Process'
 export default {
   props: ['data'],
+  components: { Process },
   data() {
     return {};
   },
