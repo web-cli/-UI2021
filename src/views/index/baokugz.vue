@@ -1,12 +1,18 @@
 <template>
-	<div>
+	<div class="baokugz">
 
-		<div class="header">
+		<!-- <div class="header">
 			<div class="head" >
 				<a @click="$router.back()" class="back"></a>
 				宝库规则
 			</div>
-		</div>
+		</div> -->
+		  <van-nav-bar
+      title="宝库规则"
+      left-arrow
+      fixed
+      @click-left="$router.back()"
+    />
 		<div class="baokubg"></div>
 
 	</div>
@@ -51,10 +57,12 @@
 	html,
 	body {
 		background: #e5e5e5;
+		height: 100vh;
 	}
 
 	.baokubg {
-		height: 1000px;
+		height: 91vh;
+		margin-top: 100px;
 		background-repeat: no-repeat;
 		background-size: 100%;
 		background-image: url(./image/huanbao/baokuguize.jpg);
@@ -239,4 +247,9 @@
 		margin: 0 auto;
 
 	}
+</style>
+<style lang="scss" scoped>
+.baokugz{
+	// height: 100vh;
+}
 </style>

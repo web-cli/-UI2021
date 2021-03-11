@@ -1,11 +1,17 @@
 <template>
-    <div>
-        <div class="header">
+    <div class="share-content">
+        <!-- <div class="header">
             <div class="head">
                 <router-link to="/user" class="back"></router-link>
                 邀请好友
             </div>
-        </div>
+        </div> -->
+            <van-nav-bar
+      title="邀请好友"
+      left-arrow
+      fixed
+      @click-left="$router.push({path:'/user'})"
+    />
         <div class="top">
             <div class="avator_box">
                 <div class="avatar" v-bind:style="{'background-image':'url(' + data.avatar + ')'}"></div>
@@ -77,8 +83,8 @@
 
     .top {
         padding: 25px 0 85px 0;
-        background: #554b5f;
-
+        background: #faab0c;
+        margin-top: 100px;
     }
 
     .top .title {
@@ -97,7 +103,7 @@
         width: 51.8%;
         margin: 0 auto;
         position: relative;
-        background: #e8c27d;
+        // background: #e8c27d;
         border-radius: 15px;
         padding: 1px 0;
     }
@@ -116,15 +122,15 @@
     }
 
     .top .avator_box .invite_btn {
-        height: 22px;
-        line-height: 22px;
+        height: 66px;
+        line-height: 66px;
         color: #fefefe;
-        font-size: 12px;
+        font-size: 24px;
         border-radius: 22px;
-        width: 140px;
+        width: 280px;
         text-align: center;
         background: #544b5e;
-        margin: 7px auto 10px auto;
+        margin: 14px auto 20px auto;
     }
 
     .top .avator_box .invite_title {
@@ -142,9 +148,10 @@
 
     .main {
         width: 89%;
-        padding: 38px 6% 0 6%;
+        padding: 76px 6% 0 6%;
         background: #fff;
         border-radius: 15px;
+        box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
         margin: -72px auto 0 auto;
         position: relative;
     }
@@ -154,13 +161,13 @@
         z-index: 10;
         color: #fff;
         text-indent: 5px;
-        width: 90px;
-        height: 16px;
-        line-height: 16px;
-        font-size: 12px;
+        width: 180px;
+        height: 56px;
+        line-height:56px;
+        font-size: 24px;
         background: #e8c27d;
         border-radius: 0 16px 16px 0;
-        top: 14px;
+        top: 28px;
         left: 0;
     }
 
@@ -185,13 +192,13 @@
 
     .main .content .item .left {
         float: left;
-        width: 90px;
+        width: 180px;
         text-align: center;
     }
 
     .main .content .item .right {
         float: right;
-        width: 140px;
+        width: 280px;
         text-align: center;
     }
 
@@ -207,8 +214,8 @@
     }
 
     .qrcode_box {
-        width: 258px;
-        height: 260px;
+        width: 258*2px;
+        height: 260*2px;
         background-image: url(images/invite_qrcode_box.png);
         background-repeat: no-repeat;
         background-position: center;
@@ -224,34 +231,41 @@
     }
 
     .qrcode_box .qrcode {
-        width: 134px;
-        height: 134px;
+        width: 134*2px;
+        height: 134*2px;
         background-image: url(images/qrcode.png);
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        margin: 15px auto;
+        margin: 30px auto;
     }
 
     .qrcode_box .qrcode_info {
         text-align: center;
         color: #fff;
-        font-size: 13px;
+        font-size: 26px;
         margin: 20px auto 12px auto;
 
     }
 
     .qrcode_box .qrcode_btn {
         display: block;
-        width: 128px;
-        height: 36px;
-        line-height: 36px;
+        width: 128*2px;
+        height: 36*2px;
+        line-height: 36*2px;
         text-align: center;
         border-radius: 36px;
-        font-size: 16px;
+        font-size: 32px;
         color: #544b5e;
         background: #e8c27d;
         margin: 0 auto;
+        margin-top: 20px;
 
     }
+</style>
+<style lang="scss" scoped>
+.share-content{
+    height: 91vh;
+    background: #ffffff;
+}
 </style>

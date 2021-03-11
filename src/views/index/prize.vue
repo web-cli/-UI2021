@@ -1,12 +1,18 @@
 <template>
 	
     <div class="container">
-		<div class="header">
+		<!-- <div class="header">
 		    <div class="head">
 		        <a @click="$router.back()" class="back"></a>
 		        幸运转盘
 		    </div>
-		</div>
+		</div> -->
+    <van-nav-bar
+      title="幸运转盘"
+      left-arrow
+      fixed
+      @click-left="$router.back()"
+    />
         <div class="lucky-wheel">
             <div class="lucky-title">
                 <img style="width: 100%;" src="./image/huanbao/top.png">
@@ -29,7 +35,7 @@
             </div>
             <div class="jl">
                 <p>
-					<van-button type="primary" icon="question" @click="dialog">活动规则</van-button>
+					<van-button type="primary" icon="question" @click="dialog" style="marginRight:10px;">活动规则</van-button>
 					<van-button type="primary" icon="service" to="/kefu">在线客服</van-button>
                     <!-- <router-link to="/kefu" class="zjjl">在线客服&gt;&gt;</router-link> -->
                     <!-- <span @click="dialog">活动规则&gt;&gt;</span> -->
@@ -42,7 +48,7 @@
                     <span>获得奖励</span>
                 </p>
                 <div class="zhongj-bbk">
-                    <div class="zhongj-bb" style="overflow:hidden;" ref="outbox">
+                    <div class="zhongj-bb"  ref="outbox">
                         <div class="zhongj-bbl inner-container" ref="movebox">
                             <div class="prize_list" v-for="(item, key) in data" :key="key">
                                 <li>{{item.mobile}}</li>
@@ -56,7 +62,7 @@
         <div class="toast" v-show="toast_control">
             <div class="toast-container">
                 <img :src="prize_img" class="toast-picture">
-                <div class="close" @click="close_toast()"></div>
+                <div class="close" @click="close_toast"></div>
                 <div class="toast-title">
                     {{prize_name}}
                 </div>
@@ -234,7 +240,8 @@
         background: red url("./image/bk.png") no-repeat fixed top;
         background-size: 100% 100%;
         .inner-container {
-
+            height: 380px;
+            overflow: auto;
         }
 
         /*文字无缝滚动*/
@@ -252,6 +259,8 @@
             /*animation: myMove 5s linear infinite;*/
             /*animation-fill-mode: forwards;*/
             height: 30px;
+            color: #ffffff;
+            margin-top: 10px;
 
             li {
                 width: 50%;
@@ -263,6 +272,7 @@
 
         .lucky-wheel {
             width: 100%;
+            margin-top: 100px;
         }
 
         .lucky-title {
@@ -416,24 +426,26 @@
         }
 
         .gdbox > strong {
-            font-size: 16px;
+            font-size: 32px;
             display: block;
-            color: #303030;
+            color: #ffffff;
             text-align: center;
             padding: 10px 0;
-            margin-top: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
         .gdbox > p {
             text-align: center;
-            color: #303030;
+            color: #ffffff;
             margin: 0px;
-            background: #b9925b
+            background: #2c6dfb;
         }
 
         .zhongj-bbk {
             width: 89.1%;
-            height: auto;
+            height: 380px;
+            overflow: auto;
             margin: 0 auto;
             padding-top: 10px;
         }
@@ -619,7 +631,7 @@
 
         .toast-title {
             padding: 2.8125rem 0;
-            font-size: 18px;
+            font-size: 36px;
             color: #fc7939;
             text-align: center;
         }
@@ -646,21 +658,21 @@
             rgb(252, 124, 88) 51%,
             rgb(252, 124, 88) 99%);
             box-shadow: 0px 4px 0px 0px rgba(174, 34, 5, 0.7);
-            width: 60px;
-            height: 30px;
+            width: 120px;
+            height: 60px;
             border-radius: 15px;
             text-align: center;
-            line-height: 30px;
+            line-height: 60px;
             color: #fff;
-            font-size: 14px;
+            font-size: 28px;
         }
 
         .close {
             position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 40px;
-            height: 40px;
+            top: -40px;
+            right: -40px;
+            width: 80px;
+            height: 80px;
             background: url("./image/close_store.png") no-repeat center top;
             background-size: 100%;
         }

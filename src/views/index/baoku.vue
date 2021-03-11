@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class="baoku-content">
 		<div class="user_n1">
-			<div class="header">
+			<!-- <div class="header">
 				<div class="head">
 					<a @click="$router.back()" class="back"></a>
 					宝库
@@ -9,16 +9,24 @@
 						使用规则
 					</a></router-link>
 				</div>
-			</div>
+			</div> -->
+			  <van-nav-bar
+      title="宝库"
+      left-arrow
+			right-text="使用规则"
+			@click-right="$router.push({path:'/baokugz'})"
+      fixed
+      @click-left="$router.back()"
+    />
 			<div class="">
 				<div class="top">
 
 					<div class="avator_right">
 
-						<div class="avator_right_info1">
-							￥ {{this.baoku_data.sumMoney}} </div>
+						<!-- <div class="avator_right_info1">
+						</div> -->
 						<div class="avator_right_info2">
-							宝库总金额(元)
+							宝库总金额: <span>	￥ {{this.baoku_data.sumMoney}} </span>(元)
 						</div>
 					</div>
 				</div>
@@ -712,17 +720,18 @@
 
 	.left_box_info1 {
 		line-height: 25px;
-		color: #878787;
-		font-size: 13px;
-		margin-bottom: 5px;
+		color: #242e39;
+		font-size: 26px;
+		margin-bottom: 20px;
 	}
 
 	.left_box_info2 {
 		line-height: 25px;
 		align-items: center;
-		color: #1ca3ff;
-		font-size: 16px;
+		color: #EE0A24;
+		font-size: 32px;
 		text-align: center;
+		margin-bottom: 20px;
 	}
 
 	.left_box_info3 {
@@ -757,12 +766,12 @@
 		padding-left: 15px;
 		padding-right: 15px;
 		display: inline-block;
-		height: 30px;
+		height: 60px;
 		border-radius: 50px;
-		line-height: 30px;
+		line-height: 60px;
 		background: #ffa500;
 		color: #fff;
-		font-size: 15px;
+		font-size: 30px;
 		margin-top: 25px;
 	}
 
@@ -844,4 +853,26 @@
 			opacity: 1
 		}
 	}
+</style>
+<style lang="scss" scoped>
+.baoku-content{
+	height: 100vh;
+}
+.top{
+	margin-top: 100px;
+	.avator_right_info2{
+		font-size: 28px;
+		color: $black;
+		span{
+color: $money;
+font-size: 28px;
+font-weight: 500;
+		}
+		
+	}
+}
+.mt0{
+	height: 300px;
+	padding: 0 20px;
+}
 </style>
