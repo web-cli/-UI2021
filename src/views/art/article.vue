@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrap">
+  <div class="content-wrap" style="height:100vh;">
     <!-- <div class="header">
             <div class="head">
                 <a @click="$router.back()" class="back"></a>

@@ -4,7 +4,10 @@
       <div class="percent" :style="`width: ${schedule} + '%'`"></div>
     </div>
     <span class="percent_num">{{schedule}}%</span> -->
-		<van-progress :percentage="schedule" stroke-width="10"  />
+		<div v-if="schedule !==undefined">
+			<van-progress :percentage="schedule" stroke-width="10"  />
+		</div>
+		
   </div>
 </template>
 

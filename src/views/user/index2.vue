@@ -213,13 +213,20 @@
 				</svg>
 				<p>邀请好友</p>
 						</div>
-						</router-link>
+						<!-- </router-link>
 						<router-link to="/active">
 						<div class="img-item">
 										<svg class="svg iconImg" aria-hidden="true">
 					<use xlink:href="#iconshuiwuguanlixitong"></use>
 				</svg>
-				<p>税务申报</p>
+				<p>税务申报</p> -->
+        	 </router-link>
+						<router-link to="/active">
+						<div class="img-item">
+										<svg class="svg iconImg" aria-hidden="true">
+					<use xlink:href="#iconguanyuwomen"></use>
+				</svg>
+				<p>关于我们</p>
 						</div>
 						<!-- <img src="../index/image/huanbao/rwzx.png" /><span style="color: red;">税务申报</span> -->
 						</router-link>

@@ -22,19 +22,19 @@
 			<img src="./image/huanbao/jiaoshi.png" alt="" style="width: 80%;margin-left: 10%;margin-top: -30px;">
 		</div> -->
 		
-		<van-row class="bg-w card" style="margin-bottom: 16px" gutter="16">
-			<van-col span="12">
+		<!-- <van-row class="bg-w card" style="margin-bottom: 16px" gutter="16">
+			<van-col span="12" style="display:flex;justify-content:center;">
 					<router-link :to="'/item'">
-						<img src="./image/huanbao/xiangmu.png" style="height: 150px; width: 100% ">
+						<img src="./image/huanbao/xiangmu.png" style="height:120px;">
 					</router-link>
 			</van-col>
 
-			<van-col span="12">
+			<van-col span="12" style="display:flex;justify-content:center;">
 					<router-link :to="'/baoku'">
-						<img src="./image/huanbao/sbaoku.jpg"  style="height: 150px; width: 100%">
+						<img src="./image/huanbao/sbaoku.jpg"  style="height:120px">
 					</router-link>
 			</van-col>
-		</van-row>
+		</van-row> -->
 
 
 		<div class="marquee_outer mt-16" style="height: 40px" v-if="footer_type === 'n1'">
@@ -56,28 +56,41 @@
 		</div>
 
 			<van-row gutter="20" class="activity">
-				<van-col span="12">
+						<van-row class="bg-w card" style="margin-bottom: 16px" gutter="16">
+			<van-col span="12">
+					<router-link :to="'/item'">
+						<img src="./image/huanbao/xiangmu.png" style="height: 150px; width: 100% ">
+					</router-link>
+			</van-col>
+
+			<van-col span="12">
+					<router-link :to="'/baoku'">
+						<img src="./image/huanbao/sbaoku.jpg"  style="height: 150px; width: 100%">
+					</router-link>
+			</van-col>
+		</van-row>
+				<div class="img-content" >
 						<router-link :to="''">
 						<img src="./image/huanbao/qiandao.png" @click="checkin2" style="width: 100%" />
 					</router-link>
-				</van-col>
+				</div>
 
-					<van-col span="12">
+								<div class="img-content" >
 							<router-link :to="'/sport_event' ">
 						<img src="./image/huanbao/yundong.png" style="width: 100%" />
 					</router-link>
-				</van-col>
-					<van-col span="12">
+								</div>
+								<div class="img-content" >
 							<router-link :to="'/prize'">
 						<img src="./image/huanbao/zhuanpan.png" style="width: 100%" />
 
 					</router-link>
-				</van-col>
-					<van-col span="12">
+								</div>
+								<div class="img-content" >
 							<router-link :to="'/goods'">
 						<img src="./image/huanbao/shangcheng.png" style="width: 100%" />
 					</router-link>
-				</van-col>
+								</div>
 
 
 			</van-row>
@@ -1244,5 +1257,12 @@
 	.outer_wrap_hot {
 		margin-bottom: 40px;
 		padding: 0px 0px 5px 0;
+	}
+	.img-content{
+		width: 85%;
+		img{
+			// height: 166px;
+		}
+		margin:  10px auto;
 	}
 </style>
