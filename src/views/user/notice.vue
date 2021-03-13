@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-top: 46px; height: 100vh">
+    <div class="nav-bar-container">
 
     <van-nav-bar
       title="信息管理"

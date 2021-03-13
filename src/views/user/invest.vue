@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-top: 46px; height: 100vh">
+    <div class="nav-bar-container">
         <!-- <div class="header">
             <div class="head">
                 <router-link to="/user" class="back"></router-link>
