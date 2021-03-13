@@ -4,7 +4,7 @@
     <van-swipe :autoplay="2500" class="invest-banner">
       <van-swipe-item v-for="(image, index) of banner" :key="index" height="3rem">
         <a :href="image.url">
-          <img :src="image.thumb" />
+          <img :src="image.thumb" style="width:100%" />
         </a>
       </van-swipe-item>
     </van-swipe>

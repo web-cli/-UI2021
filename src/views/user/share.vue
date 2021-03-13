@@ -83,7 +83,7 @@
 
     .top {
         padding: 25px 0 85px 0;
-        background: #faab0c;
+        background: #fe7b17;
         margin-top: 100px;
     }
 
@@ -165,7 +165,7 @@
         height: 56px;
         line-height:56px;
         font-size: 24px;
-        background: #e8c27d;
+        background: #fe7b17;
         border-radius: 0 16px 16px 0;
         top: 28px;
         left: 0;
@@ -256,8 +256,8 @@
         text-align: center;
         border-radius: 36px;
         font-size: 32px;
-        color: #544b5e;
-        background: #e8c27d;
+        color: #ffffff;
+        background: #fe7b17;
         margin: 0 auto;
         margin-top: 20px;
 

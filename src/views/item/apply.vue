@@ -1,19 +1,24 @@
 <template>
-  <div class="invest-detail" style="height: 100vh">
-    <div class="header" style="height: 46px;">
+  <div class="invest-detail" style="height: 92vh">
+    <!-- <div class="header" style="height: 46px;">
       <div class="head" style="height: 46px; line-height: 46px;font-size: 16px; z-index: 2;">
         <a @click="back()" class="back invest-back"></a>
         立即投标
       </div>
-    </div>
+    </div> -->
 
-    <!-- <van-nav-bar
+    <van-nav-bar
       title="立即投标"
       left-arrow
       fixed
-      @click-left="$router.push({ path: `/item/${id}` })"
-    /> --> 
-
+      @click-left="back()"
+    /> 
+    <div class="login-top content">
+      			<!-- <svg class="svg iconImg" aria-hidden="true">
+					<use xlink:href="#iconzhanghu1"></use>
+				</svg> -->
+    </div>
+<!-- 
     <div class="mt0">
       <div class="mt0_main">
         <div class="mt0_content">
@@ -28,13 +33,25 @@
         </div>
       </div>
       <img class="mt0_bottom" src="./images/bid_bottom.png" alt="" />
-    </div>
+    </div> -->
     <form method="post" class="form" @submit.prevent="handleSubmit">
       <div class="top">
+           <div class="form_item">
+          <div class="form_item_left">账户可用余额（元）</div>
+          <div>
+            ¥ <span class="red">{{ data.user_money }}元</span>
+          </div>
+        </div>
+           <div class="form_item">
+          <div class="form_item_left">项目可投金额（元）</div>
+          <div>
+            ¥ <span class="red">{{ data.kt_money }}元</span>
+          </div>
+        </div>
         <div class="form_item">
           <div class="form_item_left">起投金额</div>
           <div>
-            ¥ <span class="yellow">{{ data.min }}元</span>
+            ¥ <span class="red">{{ data.min }}元</span>
           </div>
         </div>
         <div class="form_item">
@@ -336,7 +353,7 @@ body {
   padding: 0 8px 0 16px;
   color: #e8c27d;
   font-size: 24px;
-  background: #473e51;
+  background: #333333;
   text-align: left;
   margin-bottom: 40px;
 	// width: 248px;
@@ -404,7 +421,7 @@ body {
 }
 
 .form .top .form_item .yellow {
-  color: #e8c27d;
+  color: #fe7b17;
 }
 
 .form .top .form_item .form_item_left {
@@ -457,8 +474,9 @@ body {
 }
 
 .form .top .form_item2 > div .increase {
-  color: #333333;
-  background: #e8c27d;
+  background: #333333;
+  // background: #e8c27d;
+  color: #ffffff;
 }
 
 .form .top .form_item2 > div .bid_money {
@@ -542,15 +560,17 @@ body {
   color: #ffffff;
   text-align: center;
   border-radius: 72px;
-  background: #f33b20;
-  font-size: 36px;
+  background: #2c6dfb;
+  font-size: 34px;
   position: absolute;
-  bottom: -100px;
+  bottom: -140px;
   left: 50%;
+  font-weight: 500;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   z-index: 1;
+  margin-top: 40px;
 }
 
 .tz-monney {
@@ -565,5 +585,19 @@ body {
   color: #ccc;
 }
 
-
+</style>
+<style lang="scss" scoped>
+.content{
+  margin-top: 100px;
+}
+.form{
+  margin-top: -240px;
+}
+.yellow{
+  color: #fe7b17;
+}
+.red{
+  color: #ee0a24;
+  font-weight: 500;
+}
 </style>

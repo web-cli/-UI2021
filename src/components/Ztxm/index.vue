@@ -15,14 +15,14 @@
 
       <van-row class="card-desc">
         <van-col span="12" v-if="item.type === 7"> 产品小时利率：{{ item.rate }}% </van-col>
-        <van-col span="12" v-if="item.type === 7"> 每小时收益：{{ item.apr_money }}元 </van-col>
+        <van-col span="12" v-if="item.type === 7"> 每小时收益：<span class="money">{{ item.apr_money }}</span>元 </van-col>
 
         <van-col span="12"> 产品日利率：{{ item.rate }}% </van-col>
-        <van-col span="12"> 每日收益：{{ item.apr_money }}元 </van-col>
+        <van-col span="12"> 每日收益：<span class="money">{{ item.apr_money }}</span>元 </van-col>
 
         <van-col span="12" v-if="item.type === 7">项目周期：{{ item.day }}小时 </van-col>
         <van-col span="12" v-else>项目周期：{{ item.day }}天 </van-col>
-        <van-col span="12">总收益：{{ item.allmoney }}元</van-col>
+        <van-col span="12">总收益：<span class="money">{{ item.allmoney }}</span>元</van-col>
 
         <van-col span="12"> 您的等级：{{ item.vip }} </van-col>
 
@@ -82,5 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.card{
+  font-size: 26px;
+}
 </style>
