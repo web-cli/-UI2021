@@ -1,12 +1,5 @@
 <template>
 	<div class="nav-bar-container bg-w">
-		<!-- <div class="header">
-			<div class="head">
-				<router-link to="/user" class="back"></router-link>
-				资金明细
-			</div>
-		</div> -->
-		
     <van-nav-bar
       title="资金明细"
       left-arrow

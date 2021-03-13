@@ -1,11 +1,12 @@
 <template>
-	<div>
-		<div class="header">
-			<div class="head">
-				<router-link to="/user" class="back"></router-link>
-				积分明细
-			</div>
-		</div>
+	<div class="nav-bar-container bg-w">
+    <van-nav-bar
+      title="积分明细"
+      left-arrow
+      fixed
+      @click-left="$router.push({path:'/user'})"
+    />
+
 
 		<div class="container"  v-for="(item, key) in data.list" :key="key">
 			<div class="box">
@@ -15,7 +16,12 @@
 					</div>
 					<div class="time">{{item.time}}</div>
 				</div>
-				<div class="money" ><span :style="item.type == 2 ? 'color:#a8853a' : 'color:red'">{{item.type == 1?'+':'-'}}{{item.money}}</span></div>
+				<span v-if="item.type === 2" style="color: #df5d5b">
+						- {{item.money}}
+					</span>
+					<span v-else  style="color: #5eb561">
+						+ {{item.money}}
+					</span>
 			</div>
 		</div>
 		<!-- 		<div class="fund_wrap">
@@ -72,13 +78,15 @@
 </script>
 
 <style lang="less" scoped>
-	.desc {
-		width: 72%;
+.desc {
 		word-wrap: break-word;
+		line-height: 40px;
 	}
 
 	.time {
-		width: 72%;
+		// width: 72%;
+		padding-top: 16px;
+		font-size: 24px;
 		color: #aaa;
 	}
 
@@ -88,33 +96,34 @@
 	}
 
 	.content {
-    width: 70%;
-    font-size: 12px;
-    line-height: 17px;
+    // width: 70%;
+    // font-size: 12px;
+    // line-height: 17px;
+		background-color: #fff;
     color: #252525;
     font-family: Helvetica Neue, Helvetica, sans-serif;
     flex: 1;
 	}
 
 	.box {
-		border-bottom: 0.2px solid #927777b8!important;
-		align-items: center;
-		justify-content: space-between;
-		position: relative;
 		display: flex;
-		min-height: 50px;
+		justify-content: space-between;
 		background-color: #fff;
-		font-size: 13px;
-		padding: 10px;
+		padding: 16px 0;
+		margin: 0 32px;
+		align-items: center;
+	  border-bottom: .5px solid #ebedf0;
+		// border-bottom: 0.2px solid #927777b8!important;
+		// align-items: center;
+		// justify-content: space-between;
+		// position: relative;
+		// display: flex;
+		// min-height: 50px;
+		// background-color: #fff;
+		// font-size: 13px;
+		// padding: 10px;
 	}
 
-	.container {
-		display: block;
-		font-size: 13px;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-	}
 
 	.fund_wrap .table tr {
 		width: 100%;
@@ -186,5 +195,9 @@
 
 	.fund_wrap .table tbody tr .td_3 {
 		color: #dfba7b;
+	}
+
+	.nav-tabs-container {
+		margin: 14px 0;
 	}
 </style>
