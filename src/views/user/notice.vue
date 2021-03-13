@@ -1,11 +1,20 @@
 <template>
-    <div>
+    <div style="padding-top: 46px; height: 100vh">
+
+    <van-nav-bar
+      title="信息管理"
+      left-arrow
+      fixed
+      @click-left="$router.push({path:'/user'})"
+    />
+
+<!-- 
         <div class="header">
             <div class="head">
                 <router-link to="/user" class="back"></router-link>
                 信息管理
             </div>
-        </div>
+        </div> -->
         <div class="fund_wrap">
             <table class="table">
                 <tbody>
@@ -73,7 +82,7 @@
 
     .fund_wrap .table .header {
         width: 100%;
-        height: 34px;
+        // height: 34px;
         background-image: -webkit-gradient(linear, left top, right top, from(#666666), to(#262627));
         background-image: -o-linear-gradient(left, #666666, #262627);
         background-image: linear-gradient(to right, #666666, #262627);
@@ -111,15 +120,6 @@
         margin: 0 auto;
         border-bottom: 1px solid #EDEDED;
     }
-
-    /*.fund_wrap .table tbody tr td:first-child {*/
-    /*    text-align: left;*/
-    /*}*/
-
-    /*.fund_wrap .table tbody tr td:last-child {*/
-    /*    text-align: left;*/
-    /*}*/
-
 
     .fund_wrap .table tbody tr td {
         padding: 0 4px;
