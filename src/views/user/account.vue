@@ -1,25 +1,31 @@
 <template>
     <div>
-        <div class="header">
+        <!-- <div class="header">
             <div class="head">
                 <router-link to="/user" class="back"></router-link>
                 信息管理
             </div>
-        </div>
-        <div class="security_wrap">
+        </div> -->
+              <van-nav-bar
+        title="信息管理"
+        left-arrow
+        fixed
+        @click-left="$router.push({path:'/user'})"
+      />
+        <div class="security-content login-top ">
             <div class="safe_box">
                 <img class="safe_icon" src="./images/safe.svg">
             </div>
             <div class="mt0">
-                <div class="mt0_title">安全中心</div>
+                <!-- <div class="mt0_title">安全中心</div> -->
                 <a href="javascript:;" class="mt0_item">
-                    <div class="left">
-                        <div class="icon_box">
+                    <!-- <div class="left">
+                        <div class="icon_box">  
                             <img class="icon" src="./images/phone.svg">
                         </div>
-                        <div class="info">手机号</div>
-                    </div>
-                    <div class="right"><p class="right_info">{{data.mobile}}</p></div>
+                        <div>手机号</div>
+                    </div> -->
+                    <div class="right"><p class="right_info">手机号:<span>{{data.mobile}}</span></p></div>
                 </a>
 <!--                <router-link to="/auth" class="mt0_item">
                     <div class="left">
@@ -58,8 +64,8 @@
 				    </div>
 				</router-link> -->
 
-                <router-link to="/setpwd" class="mt0_item">
-                    <div class="left">
+                <router-link to="/setpwd" class="mt0_item btn">
+                    <!-- <div class="left">
                         <div class="icon_box">
                             <img class="icon" src="./images/password.svg" alt="">
                         </div>
@@ -67,11 +73,14 @@
                     </div>
                     <div class="right">
                         <span class="right_icon"></span>
-                    </div>
+                    </div> -->
+                       <van-button round block type="info" 
+            >修改登录密码</van-button
+          >
                 </router-link>
 
-<!--                <router-link to="/setpaypwd" class="mt0_item">
-                    <div class="left">
+               <router-link to="/setpaypwd" class="mt0_item btn">
+                    <!-- <div class="left">
                         <div class="icon_box">
                             <img class="icon" src="./images/pay_password.svg" alt="">
                         </div>
@@ -79,8 +88,11 @@
                     </div>
                     <div class="right">
                         <span class="right_icon"></span>
-                    </div>
-                </router-link> -->
+                    </div> -->
+                     <van-button round block type="info"  class="btn3"
+            >修改支付密码</van-button
+          >
+                </router-link>
             </div>
         </div>
     </div>
@@ -229,4 +241,32 @@
         font-size: 14px;
         color: #e9c37d;
     }
+</style>
+<style lang="scss" scoped>
+.security-content{
+    margin-top: 100px;
+    .safe_box{
+        margin: 0 auto;
+        padding-top: 80px;
+        @include flex-center();
+    }
+}
+.right{
+    text-align: center;
+    margin-top: 40px;
+    color: #ffffff;
+}
+.btn{
+  
+    display: inline-block;
+    width: 80%;
+    margin:  0px auto;
+    @include flex-center();
+      margin-top: 60px;
+}
+.btn3{
+    background: $orange;
+    border:1px solid $orange;
+
+}
 </style>

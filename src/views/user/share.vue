@@ -178,7 +178,7 @@
     .main .content .item {
         border-bottom: 1px solid #edebeb;
         color: #999999;
-        font-size: 12px;
+        font-size: 24px;
         padding: 1rem 0;
     }
 
@@ -187,7 +187,7 @@
     }
 
     .main .content .item .title {
-        font-size: 14px;
+        font-size: 28px;
     }
 
     .main .content .item .left {

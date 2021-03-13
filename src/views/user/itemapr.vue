@@ -1,21 +1,27 @@
 <template>
     <div class="content">
-        <router-link to="/touzi" class="back">&lt;</router-link>
+        <!-- <router-link to="/touzi" class="back">&lt;</router-link> -->
+            <van-nav-bar
+      title="投资详情"
+      left-arrow
+      fixed
+      @click-left="$router.push({ path: '/touzi' })"
+    />
         <div class="top">
         </div>
-        <div class="mt0">
-            <div class="title">投资详情</div>
+        <div class="mt0 login-top">
+            <!-- <div class="title">投资详情</div> -->
             <div class="box">
-                <div class="side left"></div>
+                <!-- <div class="side left"></div> -->
                 <div class="main">
                     <div class="main_item">
                         <div class="main_info">
                             <div>投资金额</div>
-                            <div class="big">¥{{data.money}}元</div>
+                            <div class="big">¥<span>{{data.money}}元</span></div>
                         </div>
                         <div class="main_info main_info2">
                             <div>预期效益</div>
-                            <div class="big">¥{{data.apr_money}}元</div>
+                            <div class="big">¥<span>{{data.apr_money}}</span>元</div>
                         </div>
                     </div>
                     <div class="main_item">
@@ -35,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="side right"></div>
+                <!-- <div class="side right"></div> -->
             </div>
         </div>
         <div class="mt1">
@@ -112,7 +118,8 @@
 
         .mt0 {
             padding: 60px 0 50px 0;
-            background: #544b5e;
+            // background: #2c6dfb;
+            margin-top: 100px;
         }
 
         .mt0 .title {
@@ -159,9 +166,12 @@
 
         .mt0 .box .main {
             width: 100%;
-            background: #e8c27c;
+            // background: #e8c27c;
             border-radius: 10px;
-            padding: 18px 7.8%;
+            // padding: 18px 7.8%;
+            padding: 0 60px;
+            // display: flex;
+            // justify-content: space-around;
         }
 
         .mt0 .box .main .main_item {
@@ -172,7 +182,7 @@
             -ms-flex-align: center;
             align-items: center;
             color: #ffffff;
-            font-size: 12px;
+            font-size: 24px;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
             -ms-flex-direction: row;
@@ -180,7 +190,7 @@
             -webkit-box-pack: justify;
             -ms-flex-pack: justify;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         .mt0 .box .main .main_item_last {
@@ -208,8 +218,14 @@
         }
 
         .mt0 .box .main .main_item .main_info .big {
-            margin-top: 5px;
-            font-size: 14px;
+            margin-top: 10px;
+            font-size: 28px;
+            span{
+                // color: #ee0a24;
+                // padding: 10px 0;
+                margin: 0 6px;
+                display: inline-block;
+            }
         }
 
         .mt1 {

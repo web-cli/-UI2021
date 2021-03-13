@@ -1,12 +1,18 @@
 <template>
 	
 	<div class="investment-container">
-	<div class="header">
+	<!-- <div class="header">
 		<div class="head">
 			<router-link to="/user" class="back"></router-link>
 			税务申报
 		</div>
-	</div>
+	</div> -->
+	          <van-nav-bar
+        title="税务申报"
+        left-arrow
+        fixed
+        @click-left="$router.push({path:'/user'})"
+      />
 		<div class="heigBox">
 			<div class="titleBox">
 				<div>
@@ -25,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-		<div style="color: red;width: 80%;font-size: 14px;text-align: center;">
+		<div style="color: red;width: 80%;font-size: 14px;text-align: center;background:#ffffff;width:100%;">
 			  *注：投资金额及收益不能用来申报税务！
 		</div>
         <div class="btn" @click="action">税务申报</div>
@@ -76,41 +82,45 @@
 	};
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 	.investment-container {
     height: auto;
     .heigBox{
         width: 100%;
-        height: 123px;
+        height: 246px;
         background-color: #FFFFFF;
+				margin-top: 100px;
     }
     .lineHeight{
-        width: 1px;
-        height: 25px;
+        width: 2px;
+        height: 50px;
         background: #C0B091;
         opacity: 0.3;
-        margin: 10px 5px;
+        margin: 20px 10px;
     }
     .btn {
-        width: 348px;
-        height: 43px;
-        background: linear-gradient(-90deg, #EBD18F 0%, #F4E5BD 100%);
-        border-radius: 4px;
-        font-size: 16px;
+        width: 676px;
+        height: 86px;
+        // background: linear-gradient(-90deg, #EBD18F 0%, #F4E5BD 100%);
+				background: $orange;
+        border-radius: 40px;
+        font-size: 32px;
+				color: #FFFFFF;
 		position: fixed;
         font-family: PingFang SC;
         font-weight: 500;
-        color: #6A532C;
-        line-height: 43px;
+        // color: #6A532C;
+        line-height: 86px;
         text-align: center;
-        margin: 18px auto;
-		bottom: 10px;
-		left: 13px;
+        // margin: 18px auto;
+				// margin: 0 auto;
+		bottom: 20px;
+		left: 40px;
         
     }
     .titleBox{
-        width: 348px;
-        height: 108px;
+        width: 676px;
+        height: 208px;
         background-image: url("./../../assets/images/touziBac.png");
         background-size: cover;
         background-repeat: no-repeat;
@@ -124,15 +134,15 @@
             font-family: PingFang SC;
             font-weight: 500;
 			margin:0 35px;
-            color: #C0B091;
+            color: $black;
             text-align: center;
         }
         .num{ 
-            font-size: 18px;
+            font-size: 36px;
             font-family: PingFang SC;
             font-weight: 800;
-            color: #6A532C;
-            margin-top: 13px;
+            color: $money;
+            margin-top: 26px;
             text-align: center;
         }
     }

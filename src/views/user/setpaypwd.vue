@@ -1,12 +1,69 @@
 <template>
-    <div>
-        <div class="header">
+    <div style="background:#ffffff;">
+        <!-- <div class="header">
             <div class="head">
                 <router-link to="/account" class="back"></router-link>
                 设置支付密码
             </div>
-        </div>
-        <div class="resetpaypwd_wrap">
+        </div> -->
+               <van-nav-bar
+        title="设置支付密码"
+        left-arrow
+        fixed
+        @click-left="$router.push({path:'/account'})"
+      />
+        <van-form @submit="handleSubmit" style="margin-top: 46px;background:#ffffff;">
+   
+    <van-field
+    v-model="passwd"
+    type="password"
+    name="密码"
+    label="登录密码"
+    placeholder="登录密码"
+    :rules="[{ required: true, message: '请填写登录密码' }]"
+  />
+   <van-field
+    v-model="npasswd"
+    type="password"
+    name="新密码"
+    label="新密码"
+    placeholder="新密码"
+    :rules="[{ required: true, message: '请填写新密码' }]"
+  />
+  <van-field
+    v-model="snpasswd"
+    type="password"
+    name="确认新密码"
+    label="确认新密码"
+    placeholder="确认新密码"
+    :rules="[{ required: true, message: '请确认新密码' }]"
+  />
+      <van-field
+          name="smscode"
+          v-model.trim="code"
+          center
+          clearable
+          label="短信验证码"
+          placeholder="请输入验证码"
+        >
+          <template #button>
+            <!-- <van-button size="small" type="info">发送验证码</van-button> -->
+            <van-count-down :time="time" @finish="timeCall">
+              <template v-slot="timeData">
+                <van-button round type="info" @click="sendcode" size="small">{{
+                  timeData.seconds > 0 ? timeData.seconds : '获取验证码'
+                }}</van-button>
+              </template>
+            </van-count-down>
+          </template>
+        </van-field>
+       <div class="warming" style="margin-left:20px">提醒：支付密码默认为登录密码</div>
+  <div style="margin: 16px;">
+    <van-button round block type="info" native-type="submit">提交</van-button>
+  </div>
+
+</van-form>
+        <!-- <div class="resetpaypwd_wrap">
             <form class="form" @submit.prevent="handleSubmit">
                 <label class="item">
                     <span class="info">旧密码</span>
@@ -20,13 +77,13 @@
                     <span class="info">确认新密码</span>
                     <input type="password" class="inp confirm_newpwd" v-model.trim="snpasswd" placeholder="请输入">
                 </label>
-                <div class="warming">提醒：支付密码默认为登录密码</div>
+                <div class="warming">提醒：支付密码默认为登录密码</div> -->
                 <!--                <div class="forget_box">-->
                 <!--                    <router-link to="/forgetpwd" class="forget"><span class="icon">&nbsp;?</span><span class="info">忘记密码</span></router-link>-->
                 <!--                </div>-->
-                <button type="submit" class="sbtn">确定修改</button>
+                <!-- <button type="submit" class="sbtn">确定修改</button>
             </form>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -42,6 +99,9 @@
                 passwd: '',
                 npasswd: '',
                 snpasswd: '',
+                is_send: false,
+                  time: 0,
+                  code:''
             };
         },
         created() {
@@ -83,7 +143,57 @@
                     });
                     this.$router.back();
                 });
-            }
+            },
+            // 短信验证码
+              timeCall () {
+      this.is_send = false;
+      this.time = 0;
+    },
+    // 注意 这是注册时候的验证码 你需要先传入用户的手机号码
+     sendcode () {
+
+      if (this.is_send) {
+        return;
+      }
+
+      if (!this.data.mobile) {
+        this.$notify({
+          message: '请输入手机号',
+          color: '#FF3232',
+          background: '#FFEAEA',
+        });
+        return;
+      }
+
+      //            if (!this.data.image_code) {
+      // this.$notify({
+      //     message: '请输入图片验证码',
+      // 	color: '#FF3232',
+      // 	background: '#FFEAEA',
+      // });
+      //                return;
+      //            }
+
+      this.is_send = true;
+
+      Fetch("/index/register_code", {
+        // image_code: this.data.image_code,
+        type: 'register',
+        mobile: this.data.mobile
+      }).then(() => {
+        this.time = 60 * 1000;
+        this.$notify({
+          background: '#EAF1FF',
+          color: '#3292FF',
+          message: '发送成功'
+        });
+        // this.getImageCode();
+      }).catch(() => {
+        this.is_send = false;
+        // this.getImageCode();
+      });
+
+    },
         }
     };
 </script>

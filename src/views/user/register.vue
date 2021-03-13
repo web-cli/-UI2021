@@ -45,7 +45,7 @@
           v-model.trim="data.spassword"
           :type="psd == 'password' ? 'password' : 'text'"
           name="密码"
-          label="密码"
+          label="确认密码"
           placeholder="请再输入密码"
           :right-icon="psd == 'password' ? 'closed-eye' : 'eye-o'"
           @click-right-icon="show_psd"

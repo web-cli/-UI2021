@@ -1,12 +1,49 @@
 <template>
     <div>
-        <div class="header">
+        <!-- <div class="header">
             <div class="head">
                 <router-link to="/account" class="back"></router-link>
                 设置登录密码
             </div>
-        </div>
-        <div class="resetpaypwd_wrap">
+        </div> -->
+               <van-nav-bar
+        title="设置登录密码"
+        left-arrow
+        fixed
+        @click-left="$router.push({path:'/account'})"
+      />
+      <van-form @submit="handleSubmit" style="margin-top: 46px">
+   
+    <van-field
+    v-model="passwd"
+    type="password"
+    name="密码"
+    label="登录密码"
+    placeholder="登录密码"
+    :rules="[{ required: true, message: '请填写登录密码' }]"
+  />
+   <van-field
+    v-model="npasswd"
+    type="password"
+    name="新密码"
+    label="新密码"
+    placeholder="新密码"
+    :rules="[{ required: true, message: '请填写新密码' }]"
+  />
+  <van-field
+    v-model="snpasswd"
+    type="password"
+    name="确认新密码"
+    label="确认新密码"
+    placeholder="确认新密码"
+    :rules="[{ required: true, message: '请确认新密码' }]"
+  />
+  <div style="margin: 16px;">
+    <van-button round block type="info" native-type="submit">提交</van-button>
+  </div>
+
+</van-form>
+        <!-- <div class="resetpaypwd_wrap">
             <form class="form" @submit.prevent="handleSubmit">
                 <label class="item">
                     <span class="info">旧密码</span>
@@ -18,13 +55,13 @@
                 </label>
                 <label class="item">
                     <span class="info">确认新密码</span>
-                    <input type="password" class="inp confirm_newpwd" v-model.trim="snpasswd" placeholder="请输入">
-                </label>
+                    <input type="password" class="inp confirm_newpwd" v-model.trim="snpasswd" placeholder="请输入"> -->
+                <!-- </label> -->
 <!--                <div class="forget_box">-->
 <!--                    <router-link to="/forgetpwd" class="forget"><span class="icon">&nbsp;?</span><span class="info">忘记密码</span></router-link>-->
 <!--                </div>-->
-                <button type="submit" class="sbtn">确定修改</button>
-            </form>
+                <!-- <button type="submit" class="sbtn">确定修改</button>
+            </form> -->
         </div>
     </div>
 </template>
