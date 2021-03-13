@@ -60,7 +60,7 @@
              <p class="bottom-tip"> <van-icon name="info-o"  class="bottom-icon"/> {{bank_remark}}</p>
         </div>
 		<div style="margin: 20px 15px;">
-		    <van-button block round color="#ffb800" @click="submit">提交</van-button>
+		    <van-button block round color="#1989fa" @click="submit">提交</van-button>
 		</div>
     </div>
 </template>

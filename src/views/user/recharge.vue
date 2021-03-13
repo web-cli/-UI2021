@@ -35,7 +35,7 @@
                         </div>
                        </div>
                        <van-radio-group v-model="type">
-                            <van-radio :name="channel.key" checked-color="#ee0a24"></van-radio>
+                            <van-radio :name="channel.key"></van-radio>
                         </van-radio-group>
                         <!-- <input class="recharge_type" type="radio" :value="channel.key" v-model="type"> -->
                     </div>
@@ -279,7 +279,8 @@
         border-bottom: 1px solid #dcdcdc;
     }
 	.recharge_top{
-	    background: url(images/czpay_bg.png) no-repeat 50%;
+        background: #1989fa;
+	    // background: url(images/czpay_bg.png) no-repeat 50%;
 	    background-size: contain;
 	    width: 92.88%;
 	    height: 31vw;
@@ -401,7 +402,7 @@
 		color: #fff;
 		text-align: center;
 		border-radius: 36px;
-		background: #f33b20;
+		background: #1989fa;
 		font-size: 5vw;
 		position: fixed;
 		bottom: 3vw;
