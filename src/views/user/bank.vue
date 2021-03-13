@@ -1,19 +1,24 @@
 <template>
-    <div>
-        <div class="header">
+    <div class="wrap">
+        <!-- <div class="header">
             <div class="head">
                 <a @click="$router.back()" class="back"></a>
                 银行卡
             </div>
-        </div>
-
+        </div> -->
+      <van-nav-bar
+      title="银行卡"
+      left-arrow
+      fixed
+      @click-left="$router.back()"
+    />
         <div class="bank_wrap">
             <div class="bank_title">
                 <span class="info1">我的卡</span>
                 <span class="info2">共{{data.count}}张</span>
             </div>
             <div class="ctn">
-                <div class="item" v-for="(v,k) in data.list" :key="k">
+                <div class="item blank-card" v-for="(v,k) in data.list" :key="k">
                     <div class="logo bc"></div>
                     <div class="bank_info">
                         <div class="bank_name">{{v.bank}}</div>
@@ -33,7 +38,40 @@
         </div>
         <div class="dock" v-if="is_show"></div>
         <div class="addbank_popup" v-if="is_show">
-            <form method="post" class="form" @submit.prevent="handleSubmit">
+               <van-form @submit="handleSubmit" class="form">
+        <van-field
+          v-model.trim="bank.bank"
+          label="银行名称"
+          right-icon="cross"
+          @click-right-icon="clear()"
+          placeholder="请输入银行名称"
+        />
+         
+           <van-field
+          v-model.trim="bank.area"
+          label="支行名称"
+          right-icon="cross"
+          @click-right-icon="clear()"
+          placeholder="请输入支行名称"
+        />
+          <van-field
+          v-model.trim="bank.card"
+          label="储蓄卡名称"
+          right-icon="cross"
+          @click-right-icon="clear()"
+          placeholder="请输入储蓄卡号"
+        />
+        <div class="btn-list">
+          <van-button round  type="info" native-type="submit" class="btn"
+            >提交</van-button
+          >
+           <van-button round plain type="info" class="btn"  @click="close"
+            >取消</van-button
+          >
+        </div>
+      </van-form>
+
+            <!-- <form method="post" class="form" @submit.prevent="handleSubmit">
                 <div class="item">
                     <span class="icon icon_name"></span>
                     <input type="text" class="inp inp_name" v-model.trim="bank.bank" placeholder="请输入银行名称">
@@ -51,7 +89,7 @@
                     <button type="submit" class="btn sbtn">提交</button>
                     <button type="button" class="btn cancel" @click="close">取消</button>
                 </div>
-            </form>
+            </form> -->
         </div>
     </div>
 </template>
@@ -81,6 +119,7 @@
         },
         methods: {
             delBank(id) {
+                console.log(99)
                 Fetch('/user/bank_remove', {id: id}).then(() => {
                     this.start()
                 });
@@ -130,6 +169,8 @@
     .bank_wrap {
         width: 94%;
         margin: 0 auto;
+        margin-top: 120px;
+        background: #ffffff;
     }
 
     .bank_wrap .bank_title {
@@ -143,13 +184,14 @@
     }
 
     .bank_wrap .bank_title .info1 {
-        font-size: 20px;
+        font-size: 40px;
         color: #343434;
-        margin-right: 15px;
+        font-weight: 500;
+        margin-right: 30px;
     }
 
     .bank_wrap .bank_title .info2 {
-        font-size: 14px;
+        font-size: 28px;
         color: #929292;
     }
 
@@ -167,20 +209,20 @@
         -ms-flex-align: center;
         align-items: center;
         position: relative;
-        padding: 18px 15px 80px 15px;
+        padding: 18px 15px 70px 15px;
         overflow: hidden;
-        margin-top: -70px;
+        // margin-top: -70px;
         border-radius: 6px;
     }
 
     .bank_wrap .ctn .item .logo {
         -webkit-box-flex: 0;
-        -ms-flex: 0 0 36px;
-        flex: 0 0 36px;
-        height: 36px;
+        -ms-flex: 0 0 72px;
+        flex: 0 0 72px;
+        height: 72px;
         background: #fff;
         border-radius: 100%;
-        margin-right: 24px;
+        margin-right: 48px;
         border: 2px solid #fff;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -198,8 +240,8 @@
     }
 
     .bank_wrap .ctn .item .bank_info .bank_name {
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 32px;
+        margin-bottom: 30px;
     }
 
     .bank_wrap .ctn .item .bank_info .bank_card {
@@ -212,6 +254,7 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
+        // margin-top: ;
     }
 
     .bank_wrap .ctn .item .logo.bc {
@@ -219,36 +262,37 @@
     }
 
     .bank_wrap .ctn .item .bank_info .bank_card .bank_type {
-        font-size: 16px;
+        font-size: 32px;
     }
 
     .bank_wrap .ctn .item .bank_info .bank_card .bank_number {
-        font-size: 14px;
+        font-size: 30px;
     }
 
     .bank_wrap .ctn .item .delete_btn {
-        width: 60px;
-        height: 22px;
-        line-height: 22px;
+        width: 70*2px;
+        height: 26*2px;
+        line-height: 26*2px;
         text-align: center;
-        font-size: 12px;
+        font-size: 12*2px;
         color: #ffffff;
-        border-radius: 6px 0 0 6px;
+        border-radius: 20px 0 0 20px;
         position: absolute;
         right: 0;
-        top: 12px;
+        top: 24px;
+        z-index: 999;
     }
 
     .bank_wrap .ctn .item .big_logo {
         display: block;
-        width: 120px;
-        height: 120px;
+        width: 240px;
+        height: 240px;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
         position: absolute;
-        right: -10px;
-        top: 48px;
+        right: -20px;
+        top: 20px;
         opacity: 0.3;
         -webkit-filter: grayscale(100%);
         -moz-filter: grayscale(100%);
@@ -261,6 +305,7 @@
 
     .bank_wrap .ctn .item .big_logo.bc {
         background-image: url(images/yl.svg);
+        z-index: 100;
     }
 
     .bank_wrap .ctn .item:nth-child(odd) {
@@ -306,7 +351,14 @@
         height: 60px;
         padding-left: 24px;
         -webkit-box-shadow: 0 1px 8px 0 #f1f1f1;
+        background: #2c6dfb;
+        height: 100px;
+        color: #fff;
+        border-radius: 40px;
+        // text-align: center;
+        justify-content: center;
         box-shadow: 0 1px 8px 0 #f1f1f1;
+        margin-top: 40px;
     }
 
     .bank_wrap .addbank_box .add_icon {
@@ -317,8 +369,8 @@
     }
 
     .bank_wrap .addbank_box .add_info {
-        font-size: 16px;
-        color: #373636;
+        font-size: 32px;
+        // color: #373636;
     }
 
     .addbank_popup {
@@ -335,7 +387,8 @@
     }
 
     .addbank_popup .form {
-        padding: 58px 5.7% 40px 5.7%;
+        // padding: 58px 5.7% 40px 5.7%;
+        padding-top: 50px;
     }
 
     .addbank_popup .form .item {
@@ -418,4 +471,23 @@
         z-index: 100;
     }
 	
+</style>
+<style lang="scss" scoped>
+.wrap{
+    background: #ffffff;
+}
+.blank-card{
+    height: 200px;
+    margin-top: 20px;
+      box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
+}
+.btn-list{
+    display: flex;
+    margin: 40px;
+    justify-content: space-between;
+    .btn{
+        width: 46%;
+        
+    }
+}
 </style>

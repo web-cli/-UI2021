@@ -1,11 +1,17 @@
 <template>
-    <div>
-        <div class="header">
+    <div class="wrap">
+        <!-- <div class="header">
             <div class="head">
                 <a @click="$router.back()" class="back"></a>
                 提现
             </div>
-        </div>
+        </div> -->
+            <van-nav-bar
+      title="提现"
+      left-arrow
+      fixed
+      @click-left="$router.back()"
+    />
         <div class="withdraw_wrap">
             <form method="post" class="form" @submit.prevent="handleSubmit">
                 <div class="bank_box" @click="show = true" ref="add">
@@ -28,19 +34,20 @@
 				<div class="withdraw_warming">
 				    <span class="left">(需要成长值{{data.need}}可提现，当前成长值为:<span class="money">{{data.value}}</span>)</span>
 				</div>
-				<div class="van-multi-ellipsis--l2" v-if="footer_type === 'n2'">
-					【1】注册,签到,实名认证赠送的现金统一称为系统福利
+				<div class="van-multi-ellipsis--l2 tips" v-if="footer_type === 'n2'">
+					1.注册,签到,实名认证赠送的现金统一称为系统福利
 				</div>
-				<div class="van-multi-ellipsis--l3" v-if="footer_type === 'n2'">
-					【2】成长值是您投资价格总值,例如:成功投资价值500项目,那么您的成长值就是500,成长值会一直累计。
+				<div class="van-multi-ellipsis--l3 tips" v-if="footer_type === 'n2'">
+					2.成长值是您投资价格总值,例如:成功投资价值500项目,那么您的成长值就是500,成长值会一直累计。
 				</div>
-				<div class="van-multi-ellipsis--l4" v-if="footer_type === 'n2'">
-					【3】成长值未达到2000 ,账户上的系统福利不可提出,系统赠送的福利金额可参与投资(您充值的本金利润满200元可以随时提,并不受成长值影响)
+				<div class="van-multi-ellipsis--l4 tips" v-if="footer_type === 'n2'">
+					3.成长值未达到2000 ,账户上的系统福利不可提出,系统赠送的福利金额可参与投资(您充值的本金利润满200元可以随时提,并不受成长值影响)
 				</div>
                 <div class="pay_box">
-                    <span class="left_icon"></span>
+                    <!-- <span class="left_icon"></span> -->
                     <input type="password" class="inp_pay" v-model.trim="passwd" placeholder="请输入交易密码">
-                    <span class="right_icon"></span>
+                    <!-- <span class="right_icon"></span> -->
+                    <van-icon name="closed-eye"></van-icon>
                 </div>
                 <div class="forgetpay">
                     <div class="btn" @click="$router.push('/resetpaypwd')">忘记密码?</div>
@@ -174,8 +181,9 @@
         height: 30px;
         .btn{
             float: right;
-            font-size: 14px;
+            font-size: 26px;
             color: #00A0E9;
+            margin: 10px 0;
         }
     }
 
@@ -206,31 +214,32 @@
         display: -ms-flexbox;
         display: flex;
         width: 100%;
-        height: 80px;
+        height: 160px;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        padding: 0 12px 0 24px;
+        padding: 0 24px 0 48px;
         background-image: -webkit-gradient(linear, left top, right top, from(#666666), to(#262627));
         background-image: -o-linear-gradient(left, #666666, #262627);
         background-image: linear-gradient(to right, #666666, #262627);
-        margin: 22px auto 34px auto;
+        margin: 44px auto 68px auto;
         -webkit-box-shadow: 0 1px 6px 0 #7d7c7c;
-        box-shadow: 0 1px 6px 0 #7d7c7c;
+        // box-shadow: 0 1px 6px 0 #7d7c7c;
+        box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
     }
 
     .withdraw_wrap .form .bank_box .left .left_bank_name {
         color: #efeff4;
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 36px;
+        margin-bottom: 16px;
     }
 
     .withdraw_wrap .form .bank_box .left .left_bank_number {
         color: #efeff4;
-        font-size: 14px;
+        font-size: 28px;
     }
 
     .withdraw_wrap .form .bank_box .right {
@@ -243,15 +252,15 @@
     }
 
     .withdraw_wrap .form .bank_box .right .right_bank_name {
-        font-size: 12px;
+        font-size: 30px;
         color: #f3b467;
-        margin-right: 18px;
+        margin-right: 26px;
     }
 
     .withdraw_wrap .form .bank_box .right .right_arrow {
         display: inline-block;
-        width: 8px;
-        height: 16px;
+        width: 16px;
+        height: 32px;
         background-image: url(./images/right_arrow.svg);
         background-repeat: no-repeat;
         background-position: center;
@@ -268,20 +277,20 @@
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        color: #212121;
+        color: #969799;
     }
 
     .withdraw_wrap .form .withdraw_warming .left {
-        font-size: 15px;
+        font-size: 26px;
         white-space: nowrap;
-        margin-right: 16px;
-        line-height: 18px;
+        margin-right: 32px;
+        line-height: 60px;
     }
 
     .withdraw_wrap .form .withdraw_warming .right {
-        font-size: 12px;
+        font-size: 24px;
         white-space: pre-wrap;
-        line-height: 22px;
+        line-height: 44px;
         text-align: right;
     }
 
@@ -306,20 +315,22 @@
         -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
-        font-size: 36px;
-        color: #f3b467;
+        font-size: 68px;
+        color: #242e39;
         padding: 0 10px;
         line-height: 40px;
     }
 
     .withdraw_wrap .form .remain_money {
-        font-size: 15px;
-		line-height: 20px;
-        color: #212121;
+        font-size: 30px;
+		// line-height: 20px;
+        color: #242e39;
+        // margin:20px 0;
+        margin-bottom: 30px;
     }
 
     .withdraw_wrap .form .remain_money .money {
-        color: #f3b467;
+        // color: #f3b467;
     }
 
     .withdraw_wrap .form .pay_box {
@@ -333,7 +344,7 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        height: 46px;
+        height: 92px;
         padding: 0 14px 0 12px;
         margin: 15px auto;
         -webkit-box-shadow: 0 1px 8px 0 #F1F1F1;
@@ -356,7 +367,7 @@
         -webkit-box-flex: 0;
         -ms-flex: 0 0 20px;
         flex: 0 0 20px;
-        height: 20px;
+        height: 40px;
         background-image: url(./images/eye_close.svg);
         background-repeat: no-repeat;
         background-size: contain;
@@ -372,7 +383,7 @@
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
         padding: 0 10px;
-        font-size: 14px;
+        font-size: 28px;
         line-height: 14px;
         color: #212121;
     }
@@ -380,17 +391,18 @@
     .withdraw_wrap .form .sbtn {
         display: block;
         width: 100%;
-        height: 42px;
-        line-height: 42px;
+        height: 84px;
+        line-height: 84px;
         text-align: center;
-        background: #e8c27d;
-        border-radius: 2px;
-        font-size: 18px;
+        background: #fe7b17;
+        border-radius: 40px;
+        font-size: 36px;
         color: #fff;
+        margin-top: 30px;
     }
 
     .withdraw_wrap .form .withdraw_tip {
-        font-size: 12px;
+        font-size: 24px;
         color: #212121;
         opacity: .5;
         line-height: 1.7;
@@ -398,4 +410,16 @@
     }
 </style>
 
-
+<style lang="scss" scoped>
+.withdraw_wrap{
+    margin-top: 120px;
+}
+.wrap{
+    background: #ffffff;
+}
+.tips{
+    color: #cbc9cc;
+    line-height: 1.6;
+    margin: 10px;
+}
+</style>

@@ -7,8 +7,8 @@
       fixed
       @click-left="$router.push({ path: '/touzi' })"
     />
-        <div class="top">
-        </div>
+        <!-- <div class="top">
+        </div> -->
         <div class="mt0 login-top">
             <!-- <div class="title">投资详情</div> -->
             <div class="box">
@@ -44,7 +44,31 @@
                 <!-- <div class="side right"></div> -->
             </div>
         </div>
-        <div class="mt1">
+             <div class="fund_wrap">
+            <table class="table">
+                <tbody>
+                <tr class="header">
+                    <th class="first">期号</th>
+                    <th>应收本金</th>
+                    <th>应收利息</th>
+                     <th style="width:50%;">应收时间</th>
+                      <th>收益时间</th>
+                    <th class="last">状态</th>
+                </tr>
+                <tr v-for="(item, key) in data.apr_plan" :key="key">
+                    <td>第{{item.num}}期</td>
+                    <td style="color:#a8853a">{{item.money2}}</td>
+                    <td style="color:#a8853a">{{item.money1}}</td>
+                    <td>{{item.time1|dateFormat}}</td>
+                         <td>{{item.time2 != '0000-00-00 00:00:00'?item.time2:'未完成'}}</td>
+                    <td class="border_right">{{item.status == 1?'已完成':'未完成'}}</td>
+                    <!-- <td :style="status(item.status)">{{item.status=='0'?'待审核':(item.status=='1'?'充值成功':'充值失败')}}</td> -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div class="mt1">
             <table class="table">
                 <thead>
                 <tr>
@@ -67,14 +91,14 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 
     import Fetch from '../../utils/fetch'
-
+      import moment from "moment";
     export default {
         name: "index",
         components: {},
@@ -88,6 +112,11 @@
         },
         mounted() {
             this.start();
+        },
+          filters: {
+            dateFormat(time) {
+                return moment(time).format('MM.DD hh:mm');
+            }
         },
         methods: {
             start() {
@@ -223,8 +252,9 @@
             span{
                 // color: #ee0a24;
                 // padding: 10px 0;
-                margin: 0 6px;
-                display: inline-block;
+                // margin: 0 6px;
+                padding-left: 10px;
+                // display: inline-block;
             }
         }
 
@@ -274,4 +304,10 @@
             color: #333;
         }
     }
+</style>
+<style lang="scss" scoped>
+.content{
+    background: #f2f2f2;
+    height: 92vh;
+}
 </style>

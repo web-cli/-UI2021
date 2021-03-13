@@ -284,7 +284,12 @@ export default new Router({
 			component: () =>
 				import( /* webpackChunkName: "home" */ "./views/index/goods_details.vue")
 		},
-		
+		{
+			path: "/goods_detail2",
+			name: "goods_detail2",
+			component: () =>
+				import( /* webpackChunkName: "home" */ "./views/index/goods_detail2.vue")
+		},
 		{
 			path: "/integral",
 			name: "integral",

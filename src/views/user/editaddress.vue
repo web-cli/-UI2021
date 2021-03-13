@@ -1,11 +1,19 @@
 <template>
-    <div>
-        <div id="header">
+    <div class="wrap">
+        <!-- <div id="header">
             <div class="header">
                 <span class="back" @click="$router.push('/address')"></span>
                 {{title}}
             </div>
-        </div>
+        </div> -->
+             <van-nav-bar
+        :title="title"
+        left-arrow
+        fixed
+        @click-left="$router.push({ path: '/address' })"
+      />
+      <div style="margin-top:50px;">
+          
         <van-address-edit
                 :area-list="areaList"
                 show-postal
@@ -19,6 +27,8 @@
                 @delete="onDelete"
 				@change-detail="onChangeDetail"
         />
+      </div>
+
     </div>
 </template>
 
@@ -4231,4 +4241,10 @@
     /deep/ .van-cell {
         margin-top: 5px;
     }
+</style>
+<style lang="scss" scoped>
+.wrap{
+    height: 91vh;
+    background: #ffffff;
+}
 </style>
