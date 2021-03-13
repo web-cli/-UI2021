@@ -1,15 +1,22 @@
 <template>
-    <div>
-        <div class="header">
+    <div class="wrap">
+        <!-- <div class="header">
             <div class="head">
                 关于我们
             </div>
-        </div>
+        </div> -->
+                 <van-nav-bar
+        title="关于我们"
+        left-arrow
+        fixed
+        @click-left="$router.back()"
+      />
         <div class="main">
-            <router-link :to="'/art/' + item.id" class="item clearfix" v-for="(item, key) in data" :key="key">
-                <span class="icon icon ico_notice"></span>
-                <span class="info">{{item.title}}</span>
-                <span class="right"></span>
+            <router-link :to="'/art/' + target.id" class="cell-item"  v-for="(target, key) in data" :key="key">
+                <!-- <span class="icon icon ico_notice"></span>
+                <span class="info">{{target.title}}</span>
+                <span class="right"></span> -->
+                <van-cell :title="target.title" icon="search" is-link size="large" />
             </router-link>
         </div>
     </div>
@@ -78,11 +85,13 @@
         padding: 0 3.8% 3.8% 14px;
         background: #fff;
         border-radius: 26px;
-        -webkit-box-shadow: 0 0 8px 5px #ededed;
-        box-shadow: 0 0 8px 5px #ededed;
+        // -webkit-box-shadow: 0 0 8px 5px #ededed;
+        // box-shadow: 0 0 8px 5px #ededed;
+         box-shadow: 0 1vw 1vw 1vw rgba(0, 0, 0, 0.2);
+        margin-top: 130px;
     }
 
-    .main .item {
+    .main .block-item {
         display: block;
         padding: 1.5rem 0;
         border-bottom: 1px solid #dcdcdc;
@@ -90,11 +99,11 @@
         font-size: 13px;
     }
 
-    .main .item_last {
+    .main .block-item_last {
         border: none;
     }
 
-    .main .item .icon {
+    .main .block-item .icon {
         float: left;
         width: 18px;
         height: 18px;
@@ -105,53 +114,53 @@
 
     }
 
-    .main .item .ico_notice {
+    .main .block-item .ico_notice {
         background-image: url(images/more_icon_notice.png);
 
     }
 
-    .main .item .ico_company {
+    .main .block-item .ico_company {
         background-image: url(images/more_icon_company.png);
 
     }
 
-    .main .item .ico_user {
+    .main .block-item .ico_user {
         background-image: url(images/more_icon_user.png);
 
     }
 
-    .main .item .ico_safe {
+    .main .block-item .ico_safe {
         background-image: url(images/more_icon_safe.png);
 
     }
 
-    .main .item .ico_tel {
+    .main .block-item .ico_tel {
         background-image: url(images/more_icon_tel.png);
 
     }
 
-    .main .item .ico_photo {
+    .main .block-item .ico_photo {
         background-image: url(images/more_icon_photo.png);
 
     }
 
-    .main .item .ico_pay {
+    .main .block-item .ico_pay {
         background-image: url(images/more_icon_pay.png);
 
     }
 
-    .main .item .ico_help {
+    .main .block-item .ico_help {
         background-image: url(images/more_icon_help.png);
 
     }
 
 
-    .main .item .info {
+    .main .block-item .info {
         float: left;
 
     }
 
-    .main .item .right {
+    .main .block-item .right {
         float: right;
         width: 6px;
         height: 18px;
@@ -162,4 +171,23 @@
         margin-right: 5px;
 
     }
+</style>
+<style lang="scss" scoped>
+.van-cell {
+    // height: 110px;
+    // line-height: 110px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.van-icon-search {
+    color: $primary-color;
+}
+.cell-item{
+    width: 100%;
+    height: 110px;
+    // line-height: 110px;
+}
+.wrap{
+    height: 91vh;
+    background: #ffffff;
+}
 </style>
