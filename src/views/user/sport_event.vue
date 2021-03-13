@@ -1,11 +1,12 @@
 <template>
-	<div>
-	    <div class="header">
-	        <div class="head">
-	            <a @click="$router.back()" class="back"></a>
-	            运动加油站
-	        </div>
-	    </div>
+<div class="nav-bar-container bg-w">
+    <van-nav-bar
+      title="运动加油站"
+      left-arrow
+      fixed
+      @click-left="$router.back()"
+    />
+
 	    <div class="main">
 			<img style="width: 100%;" src="../index/image/huanbao/ydbg.png" alt="">
 			<div class = "ddates">倒计时：<span style="color: red;font-weight: 700; font-size: 4vw;">{{minutes}}:{{seconds}}</span></div>
@@ -13,7 +14,7 @@
 	            <img :src="item.image" class="iocs" >
 	            <p class="infos">{{item.title}}</p>
 				<p class="dates">完成时间{{item.date}}分钟</p>
-	            <div class="buts actions" v-if="item.status=='0'" @click="takeExercises(item.id)" > {{item.status_text}}</div>
+	      <div class="buts actions" v-if="item.status=='0'" @click="takeExercises(item.id)" > {{item.status_text}}</div>
 				<div class="buts receive" v-else-if="item.status=='1'" @click="receiveRewardsExercises(item.id)" > {{item.status_text}}</div>
 				<div class="buts noaction" v-else-if="item.status=='2'" > {{item.status_text}}</div>
 				<div class="buts nowaction" v-else-if="item.status=='3'" > {{item.status_text}}</div>
@@ -181,15 +182,15 @@
 		
 	}
 	.actions{
-		background-color: #8464C4;
+		background-color: #1989fa;
 	}
 	.noaction{
 		background-color: #d3d3d3;
 	}
 	.receive{
-		background-color: #d3d3d3;
+		background-color: #1989fa;
 	}
 	.nowaction{
-		background-color: #808A87;
+		background-color: #09c15f;
 	}
 </style>

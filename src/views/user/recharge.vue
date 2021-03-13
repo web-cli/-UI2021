@@ -1,17 +1,19 @@
 <template>
-    <div>
-        <div class="header">
-            <div class="head">
-                <router-link to="/user" class="back"></router-link>
-                充值
-            </div>
-        </div>
+   	<div class="nav-bar-container">
+    <van-nav-bar
+      title="充值"
+      left-arrow
+      fixed
+      @click-left="$router.push({path:'/user'})"
+    />
+      
 		<div  class="recharge_top">
 			<div  class="remian_money">
 				<span  class="remian_money_span1">可用余额</span>
 				<span  class="remian_money_span2">¥{{data.money}}</span>
 			</div>
 		</div>
+
         <form class="form" method="post" @submit.prevent="handleSubmit">
             <div class="box box1">
                 <div class="title1">充值金额</div>
@@ -20,30 +22,45 @@
                     <input type="number" step="0.01" name="money" v-model="money"
                            :placeholder="'最低充值:' + data.min_recharge + '元'">
                 </div>
-                <div class="line"></div>
             </div>
-            <div class="box box2">
-                <!-- <div class="title2">选择充值方式</div> -->
-                <div class="recharge_box">
-                    <div class="recharge_item clearfix" v-for="(channel, key) in data.config" :key="key" v-if="channel.is_show">
-                        <span class="recharge_icon" :class="'recharge_' + channel.key"></span>
+            <div class="box">
+                <div class="title1">选择充值方式</div>
+                <div class="recharge_item" v-for="(channel, key) in data.config" :key="key">
+                    <div v-if="channel.is_show" class="yhk-wrapper">
+                       <div class='yhk-left'>
+                            <span class="recharge_icon" :class="'recharge_' + channel.key"></span>
                         <span class="recharge_info">{{channel.name}}</span>
                         <div class="bank-remark" v-if="(channel.key === 'bank' || channel.key === 'alipay_bank'|| channel.key === 'service') && channel.is_show ===1 ">
-                            <img src="./images/fanli.png" style="width:auto;height:25px;line-height: 25px;"/>
+                            <img src="./images/fanli.png" style="width:auto;height:24px;line-height: 24px;"/>
                         </div>
-                        <input class="recharge_type" type="radio" :value="channel.key" v-model="type">
+                       </div>
+                       <van-radio-group v-model="type">
+                            <van-radio :name="channel.key"></van-radio>
+                        </van-radio-group>
+                        <!-- <input class="recharge_type" type="radio" :value="channel.key" v-model="type"> -->
                     </div>
                 </div>
             </div>
-			<div class="msg">
-				<div  class="title2">
-					<p  class="desc" style="font-weight: 700;">转账说明：</p>
-					<p  class="desc" style="color:#ff0004;font-size: 18px;">【1】选择“网银/手机银行/支付宝转银行卡”立返1.00%现金。</p>
-					<p  class="desc">【2】支付宝APP/扫码支付 单笔金额≤{{data.alipay_app_top_money}}元，如超过此金额，请分多笔转账或选择银行汇款。</p>
-					<p  class="desc">【3】“银行汇款”建议使用小数点的金额进行转账充值，例如：500.12，10000.34等小数金额(加快到账时间)。</p>
-					<p  class="desc" to="/kefu">【4】如有疑问可以联系在线客服咨询。</p>
-				</div>
-			</div>
+            <div class="box">
+                <div class="title1">转账说明：</div>
+                    <div class="tip-container tip1">
+                        <div class="number">1. </div>
+                        <div>选择“网银/手机银行/支付宝转银行卡”立返1.00%现金。</div>
+                    </div>
+                    <div class="tip-container">
+                        <div class="number">2. </div>
+                        <div>支付宝APP/扫码支付 单笔金额≤{{data.alipay_app_top_money}}元，如超过此金额，请分多笔转账或选择银行汇款。。</div>
+                    </div>
+                    <div class="tip-container">
+                        <div class="number">3. </div>
+                        <div>“银行汇款”建议使用小数点的金额进行转账充值，例如：500.12，10000.34等小数金额(加快到账时间)。</div>
+                    </div>
+                    <div class="tip-container">
+                        <div class="number">4. </div>
+                        <div>如有疑问可以联系在线客服咨询。</div>
+                    </div>
+            </div>
+		
             <button type="submit" class="btn">立即充值</button>
         </form>
     </div>
@@ -187,7 +204,8 @@
     .form .box {
     background: #fff;
     border-radius: 2vw;
-    padding: 20px 0 20px 0;
+    padding: 20px;
+    // padding: 20px 0 20px 0;
     margin-bottom: 3vw;
     }
 
@@ -196,22 +214,20 @@
     }
 
     .form .box2 {
-
-		padding: 10px 0 35px 0;
 		box-shadow: 0 0 6px 2px #ededed;
     }
 
-    .form .box .title1 {
+    .title1 {
         color: #333333;
-        font-size: 18px;
-        padding: 0 5.8%;
+      font-size: 32px;
+    padding-bottom: 16px;
     }
 
     .form .box .amount_box {
         display: flex;
         align-items: center;
-        padding: 0 5.8%;
-        margin: 15px auto 15px auto;
+        // padding: 0 5.8%;
+        // margin: 15px auto 15px auto;
 
     }
 
@@ -263,7 +279,8 @@
         border-bottom: 1px solid #dcdcdc;
     }
 	.recharge_top{
-	    background: url(images/czpay_bg.png) no-repeat 50%;
+        background: #1989fa;
+	    // background: url(images/czpay_bg.png) no-repeat 50%;
 	    background-size: contain;
 	    width: 92.88%;
 	    height: 31vw;
@@ -287,9 +304,10 @@
 	}
 	
 	.form .desc{
-	    line-height: 18px;
-	    padding: 2px 15px 5px 15px;
-	    font-weight: 500;
+        font-size: 24px;
+	    // line-height: 18px;
+	    // padding: 2px 15px 5px 15px;
+	    // font-weight: 500;
 	}
 
     .form .box .recharge_box .recharge_item {
@@ -307,70 +325,70 @@
 
     .form .box .recharge_box .recharge_item .recharge_icon {
         float: left;
-        width: 25px;
-        height: 25px;
+        width: 36px;
+        height: 36px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
 
     }
 
-    .form .box .recharge_box .recharge_item .recharge_icon {
+    .recharge_icon {
         float: left;
-        width: 25px;
-        height: 25px;
+        width: 36px;
+        height: 36px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
         margin-right: 8px;
     }
 
-    .form .box .recharge_box .recharge_item .recharge_bank {
+    .recharge_bank {
         background-image: url(images/recharge_online.png);
     }
 	
-	.form .box .recharge_box .recharge_item .recharge_wx_bank {
+	.recharge_wx_bank {
 	    background-image: url(images/recharge_online.png);
 	}
 	
-	.form .box .recharge_box .recharge_item .recharge_alipay_bank {
+	.recharge_alipay_bank {
 	    background-image: url(images/recharge_online.png);
 	}
 	
-	.form .box .recharge_box .recharge_item .recharge_gz_bank {
+	.recharge_gz_bank {
 	    background-image: url(images/recharge_online.png);
 	}
 
-    .form .box .recharge_box .recharge_item .recharge_alipay {
+    .recharge_alipay {
         background-image: url(images/recharge_alipay.png);
     }
 	
-	.form .box .recharge_box .recharge_item .recharge_alipay_app {
+	.recharge_alipay_app {
 	    background-image: url(images/recharge_alipay.png);
 	}
 	
-	.form .box .recharge_box .recharge_item .recharge_service {
+	.recharge_service {
 	    background-image: url(images/recharge_online.png);
 	}
 
-    .form .box .recharge_box .recharge_item .recharge_wx {
+    .recharge_wx {
         background-image: url(images/wx.png);
     }
 
-    .form .box .recharge_box .recharge_item .recharge_online_wechat {
+    .recharge_online_wechat {
         background-image: url(images/wx.png);
     }
 
-    .form .box .recharge_box .recharge_item .recharge_info {
-        float: left;
+    .recharge_info {
         color: #2e2a27;
-        font-size: 16px;
-        line-height: 25px;
-        height: 25px;
+        font-size: 26px;
+        line-height: 50px;
+        height: 50px;
+        padding: 0 10px;
 
     }
 
-    .form .box .recharge_box .recharge_item .recharge_type {
+    .recharge_type {
         float: right;
         margin-top: 3px;
     }
@@ -384,7 +402,7 @@
 		color: #fff;
 		text-align: center;
 		border-radius: 36px;
-		background: #f33b20;
+		background: #1989fa;
 		font-size: 5vw;
 		position: fixed;
 		bottom: 3vw;
@@ -404,6 +422,30 @@
 	    top: 15vw;
 	    left: -4vw;
 	}
+    .yhk-wrapper {
+        display: flex;
+            justify-content: space-between;
+    align-items: center;
+    }
+    .yhk-left {
+        display: flex;
+            align-items: center;
+    }
+    .tip-container {
+        display: flex;
+        font-size: 26px;
+        line-height: 1.5;
+        padding-bottom: 6px;
+        color:#aba7ae;
+    }
+    .tip1 {
+        color:#ff0004;
+        font-weight: bold;
+        // font-size: 2px;
+    }
+    .number {
+        padding-right: 7px;
+    }
 </style>
 
 

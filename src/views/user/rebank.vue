@@ -1,62 +1,66 @@
 <template>
-    <div class="container" style="background-color: rgb(244, 245, 247); height: 100%; position: inherit;">
-        <div class="header">
-            <div class="head">
-                <router-link to="/recharge" class="back"></router-link>
-                银行入款充值
-            </div>
-        </div>
-		<div  class="rebank_infos">
-			<div  class="van-hairline--bottom">
-				<span >转账金额：<span >￥</span>{{money}}</span>
-			</div>
-		</div>
-        <div  class="rebank_infos">
-			<div class="van-hairline--bottom">
-			    <span>收款银行：<span>{{bank_name}}</span></span>
-			</div>
-			<div class="van-hairline--bottom">
-			    <span>收款人：<span>{{bank_user}}</span></span>
-			    <button v-clipboard="() => bank_user" v-clipboard:success="copy" class="copy">
-				<img  src="./images/copy.png" alt="" style="width: 4vw;">
-				</button>
-			</div>
-			<div>
-			    <span>收款账号：<span>{{bank_card}}</span></span>
-			    <button v-clipboard="() => bank_card" v-clipboard:success="copy" class="copy">
-				<img  src="./images/copy.png" alt="" style="width: 4vw;">
-				</button>
-			</div>
-		</div>
-		<p  style="color: rgb(204, 0, 1);">
-			请复制充值页面上的户名跟银行账户，登陆您的手机银行进行银行转账汇款。
-		</p>
-		<div  class="rebank_infos">
-			<label  class="van-hairline--bottom">
-				<span >付款人：<input  type="text" v-model.trim="pay_user" placeholder="请输入付款人"></span>
-			</label>
-			<label  class="van-hairline--bottom">
-				<span >附言：<input  type="text" v-model.trim="pay_remark" placeholder="请输入充值附言"></span>
-			</label>
-		</div>
+   <div class="nav-bar-container">
+    <van-nav-bar
+      title="银行入款充值"
+      left-arrow
+      fixed
+      @click-left="$router.push({path:'/recharge'})"
+    />
 
+    	<van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" :scrollable='true'>
+        请复制充值页面上的户名跟银行账户，登陆您的手机银行进行银行转账汇款。
+        </van-notice-bar>
+
+    <van-cell-group >
+        <van-cell title="转账金额" :value="`￥${money}`" />
+        <van-cell title="收款银行" :value="bank_name"  />
+        <van-cell title="收款人">
+            <template #right-icon>
+                <span class="cell-right">{{bank_user}}</span>
+                 <button v-clipboard="() => bank_user" v-clipboard:success="copy" class="copy">
+				    <img  src="./images/copy.png" alt="" style="width: 4vw;">
+				    </button>
+            </template>
+        </van-cell>
+          <van-cell title="收款账号">
+            <template #right-icon>
+                <span class="cell-right">{{bank_card}}</span>
+                 <button v-clipboard="() => bank_card" v-clipboard:success="copy" class="copy">
+				    <img  src="./images/copy.png" alt="" style="width: 4vw;">
+				    </button>
+            </template>
+        </van-cell>
+       
+
+    </van-cell-group>
+
+
+
+        <van-cell-group class="mt-16">
+            <van-field v-model="pay_user" label="付款人" placeholder="请输入付款人" />
+            <van-field v-model="pay_remark" label="附言" placeholder="请输入充值附言" />
+        </van-cell-group>
         
-		<div  class=" tips">
-			<span >第一步：打开手机银行APP或支付宝</span>
-		</div>
-		<div  class=" tips">
-			<span >第二步：转账{{money}}元到{{bank_name}}({{bank_user}})</span>
-		</div>
-		<div  class=" tips">
-			<span >第三步：确认转账成功,点击下面按钮提交审核</span>
-		</div>
+
+        <van-steps direction="vertical" :active="0" class="mt-16" active-color="#38f">
+            <van-step>
+                <h3>打开手机银行APP或支付宝</h3>
+            </van-step>
+            <van-step>
+                <h3>转账{{money}}元到{{bank_name}}({{bank_user}})</h3>
+            </van-step>
+            <van-step>
+                <h3>确认转账成功,点击下面按钮提交审核</h3>
+            </van-step>
+        </van-steps>
+
 		<div  class="rebank_infos">
 			<span  style="padding: 10px; text-align: center; margin: 0px auto; display: block; text-decoration: underline;" ><router-link to="/art/5" class="back">不够清晰？查看转账教程</router-link></span>
 			<span  style="padding: 10px; text-align: center; margin: 0px auto; display: block; text-decoration: underline;"><router-link to="/kefu" class="back">不会操作？点击联系客服</router-link></span>
-		</div>
-        <p>{{bank_remark}}</p>
+             <p class="bottom-tip"> <van-icon name="info-o"  class="bottom-icon"/> {{bank_remark}}</p>
+        </div>
 		<div style="margin: 20px 15px;">
-		    <van-button block round color="#ffb800" @click="submit">提交</van-button>
+		    <van-button block round color="#1989fa" @click="submit">提交</van-button>
 		</div>
     </div>
 </template>
@@ -143,14 +147,7 @@
     }
 </script>
 <style lang="less" scoped>
-    .container {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        min-height: 100%;
-        //background: #8b50f8 url('./images/bg.png') no-repeat left 45px;
-        background-size: contain;
-        padding-top: 45px;
+
 
         .header {
             position: fixed;
@@ -216,8 +213,9 @@
 		.rebank_infos{
 		    background-color: #fff;
 		    border-radius: 8px;
-		    margin: 15px;
-		    margin-top: 20px;
+		    // margin: 15px;
+            margin-top: 16px;
+		    // margin-top: 20px;
 		    font-size: 14px;
 			.copy {
 			        color: #fff;
@@ -232,7 +230,7 @@
 			}
 			
 		}
-    }
+    
 .container .rebank_infos div,.container .rebank_infos label{
     display: flex;
     width: 100%;
@@ -256,4 +254,25 @@
 	    margin-top: 20px;
 	}
 
+.cell-right {
+    padding-right: 10px;
+    color: #969799;
+}
+
+.bottom-tip {
+    display: flex;
+    padding: 0 24px;
+    padding-bottom: 12px;
+    line-height: 1.4;
+}
+
+.bottom-icon {
+    transform: translateY(1px);
+    padding-right: 10px;
+}
+
+.copy {
+    transform: translateY(-4px);
+    background-color: #fff;
+}
 </style>
